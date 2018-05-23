@@ -26,7 +26,7 @@
                 </ul>
             </div>
         </div>
-{{#each products}}
+        {{#each products}}
         <div class="row" itemscope="" itemtype="http://schema.org/Product">
             <div class="col-md-5">
                 <div class="image-box js-image-box no-left">
@@ -55,7 +55,7 @@
 
 
             <div class="col-md-7">
-                
+
                 <div class="item-box">
                     <h1 class="item-name" itemprop="name" style="font-size: 36px;">
                         {{ten_sach}} </h1>
@@ -280,195 +280,36 @@
             </div>
             <div id="home_slider_book_new_outer" class="block-inner-content clearfix" style="width: 945px; margin: auto; display: block;">
                 <div id="owl-demo" class="owl-cachep-book-lib ">
-
+                    {{#each byViews}}
                     <div class="item">
                         <li class="item-outer">
-                            <a class="item-thumb" href="#" rel="nofollow">
-                                <img width="200" height="280" src="/img/book/nhumuadongroixuong-200x280.jpg" class="attachment-thumbnail-rectangle wp-post-image"
+                            <a class="item-thumb" href="./?id={{idSach}}" rel="nofollow">
+                                <img width="200" height="280" src="{{hinhAnh}}" class="attachment-thumbnail-rectangle wp-post-image"
                                     alt="nhumuadongroixuong">
                                 <span class="item-percent-bubble">-10%</span>
                             </a>
                             <div class="item-meta-outer">
                                 <h3 class="item-title">
-                                    <a href="#">Như Mùa Đông Rơi Xuống</a>
+                                    <a href="./?id={{idSach}}">{{ten_sach}}</a>
                                 </h3>
-                                <em class="item-author">Fuyu</em>
+                                <em class="item-author">{{tac_gia}}</em>
                                 <p class="item-price">
-                                    <strong>71.000
+                                    <strong>{{giaBan}}
                                         <u>đ</u>
                                     </strong>
-                                    <small>79.000
+                                    <small>{{giaBan}}
                                         <u>đ</u>
                                     </small>
                                 </p>
                             </div>
                         </li>
                     </div>
-                    <div class="item">
-                        <li class="item-outer">
-                            <a class="item-thumb" href="#" rel="nofollow">
-                                <img width="200" height="280" src="/img/book/lac_loi_giua_co_don_1-200x280.jpg" class="attachment-thumbnail-rectangle wp-post-image"
-                                    alt="lac_loi_giua_co_don_1">
-                                <span class="item-percent-bubble">-10%</span>
-                            </a>
-                            <div class="item-meta-outer">
-                                <h3 class="item-title">
-                                    <a href="#">Lạc Lối Giữa Cô Đơn</a>
-                                </h3>
-                                <em class="item-author">Minh Nhật</em>
-                                <p class="item-price">
-                                    <strong>68.000
-                                        <u>đ</u>
-                                    </strong>
-                                    <small>76.000
-                                        <u>đ</u>
-                                    </small>
-                                </p>
-                            </div>
-                        </li>
-                    </div>
-                    <div class="item">
-                        <li class="item-outer">
-                            <a class="item-thumb" href="#" rel="nofollow">
-                                <img width="200" height="280" src="/img/book/Truoc_khi_chet_phai_biet_yeu_la_gi-200x280.jpg" class="attachment-thumbnail-rectangle wp-post-image"
-                                    alt="Truoc_khi_chet_phai_biet_yeu_la_gi">
-                                <span class="item-percent-bubble">-10%</span>
-                            </a>
-                            <div class="item-meta-outer">
-                                <h3 class="item-title">
-                                    <a href="#">Trước Khi Chết Phải Biết Tình Yêu Là Gì</a>
-                                </h3>
-                                <em class="item-author">Nguyễn À Nguyễn</em>
-                                <p class="item-price">
-                                    <strong>85.500
-                                        <u>đ</u>
-                                    </strong>
-                                    <small>95.000
-                                        <u>đ</u>
-                                    </small>
-                                </p>
-                            </div>
-                        </li>
-                    </div>
-                    <div class="item">
-                        <li class="item-outer">
-                            <a class="item-thumb" href="#" rel="nofollow">
-                                <img width="200" height="280" src="/img/book/yeunguoingongnui-200x280.jpg" class="attachment-thumbnail-rectangle wp-post-image"
-                                    alt="yeunguoingongnui">
-                                <span class="item-percent-bubble">-10%</span>
-                            </a>
-                            <div class="item-meta-outer">
-                                <h3 class="item-title">
-                                    <a href="#">Yêu Người Ngóng Núi (Tản Văn – Tái Bản 2014)</a>
-                                </h3>
-                                <em class="item-author">Nguyễn Ngọc Tư</em>
-                                <p class="item-price">
-                                    <strong>40.500
-                                        <u>đ</u>
-                                    </strong>
-                                    <small>45.000
-                                        <u>đ</u>
-                                    </small>
-                                </p>
-                            </div>
-                        </li>
-                    </div>
-                    <div class="item">
-                        <li class="item-outer">
-                            <a class="item-thumb" href="#" rel="nofollow">
-                                <img width="200" height="280" src="/img/book/airoicungkhac-200x280.gif" class="attachment-thumbnail-rectangle wp-post-image"
-                                    alt="airoicungkhac">
-                                <span class="item-percent-bubble">-10%</span>
-                            </a>
-                            <div class="item-meta-outer">
-                                <h3 class="item-title">
-                                    <a href="#">Ai Rồi Cũng Khác</a>
-                                </h3>
-                                <em class="item-author">Hamlet Trương - Iris Cao</em>
-                                <p class="item-price">
-                                    <strong>62.000
-                                        <u>đ</u>
-                                    </strong>
-                                    <small>69.000
-                                        <u>đ</u>
-                                    </small>
-                                </p>
-                            </div>
-                        </li>
-                    </div>
-                    <div class="item">
-                        <li class="item-outer">
-                            <a class="item-thumb" href="#" rel="nofollow">
-                                <img width="200" height="280" src="/img/book/gao-nuoc-mam-rau-muong-200x280.jpg" class="attachment-thumbnail-rectangle wp-post-image"
-                                    alt="gao-nuoc-mam-rau-muong">
-                                <span class="item-percent-bubble">-10%</span>
-                            </a>
-                            <div class="item-meta-outer">
-                                <h3 class="item-title">
-                                    <a href="#">Gạo, Nước Mắm, Rau Muống… Câu Chuyện Ẩm Thực Việt</a>
-                                </h3>
-                                <em class="item-author">Hoàng Trọng Dũng</em>
-                                <p class="item-price">
-                                    <strong>90.000
-                                        <u>đ</u>
-                                    </strong>
-                                    <small>100.000
-                                        <u>đ</u>
-                                    </small>
-                                </p>
-                            </div>
-                        </li>
-                    </div>
-                    <div class="item">
-                        <li class="item-outer">
-                            <a class="item-thumb" href="#" rel="nofollow">
-                                <img width="200" height="280" src="/img/book/du-con-song-the-nao-me-cung-luon-ung-ho-200x280.jpg" class="attachment-thumbnail-rectangle wp-post-image"
-                                    alt="du-con-song-the-nao-me-cung-luon-ung-ho">
-                                <span class="item-percent-bubble">-10%</span>
-                            </a>
-                            <div class="item-meta-outer">
-                                <h3 class="item-title">
-                                    <a href="#">Dù Con Sống Thế Nào, Mẹ Cũng Luôn Ủng Hộ</a>
-                                </h3>
-                                <em class="item-author">Gong Ji Young</em>
-                                <p class="item-price">
-                                    <strong>61.000
-                                        <u>đ</u>
-                                    </strong>
-                                    <small>68.000
-                                        <u>đ</u>
-                                    </small>
-                                </p>
-                            </div>
-                        </li>
-                    </div>
-                    <div class="item">
-                        <li class="item-outer">
-                            <a class="item-thumb" href="#" rel="nofollow">
-                                <img width="200" height="280" src="/img/book/thucdaytrenmainha-200x280.gif" class="attachment-thumbnail-rectangle wp-post-image"
-                                    alt="thucdaytrenmainha">
-                                <span class="item-percent-bubble">-10%</span>
-                            </a>
-                            <div class="item-meta-outer">
-                                <h3 class="item-title">
-                                    <a href="#">Thức Dậy Trên Mái Nhà</a>
-                                </h3>
-                                <em class="item-author">Minh Mẫn</em>
-                                <p class="item-price">
-                                    <strong>58.500
-                                        <u>đ</u>
-                                    </strong>
-                                    <small>65.000
-                                        <u>đ</u>
-                                    </small>
-                                </p>
-                            </div>
-                        </li>
-                    </div>
+                    {{/each}}
 
                 </div>
             </div>
         </div>
+
     </div>
 
 </div>

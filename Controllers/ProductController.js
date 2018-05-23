@@ -6,9 +6,11 @@ var router = express.Router();
 
 router.get('/', (req, res) => {
     var p1 = ProductRePo.searchById(req.query.id);
-    Promise.all([p1]).then(([newB]) => {
+    var p2 = ProductRePo.loadByViews();
+    Promise.all([p1,p2]).then(([newB,Views]) => {
         var vm = {
             products: newB,
+            byViews:Views
         };
         res.render('sample_product', vm);
     });
