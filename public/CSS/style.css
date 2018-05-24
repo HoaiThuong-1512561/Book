@@ -91,7 +91,7 @@ a img.aligncenter {
 .item-content img{margin: 10px 0px;}
 
 /* Useful styles */
-.container {margin: 0 auto; max-width: 1024px; width: 94%;}
+.container {margin: 0 auto; max-width: 1424px; width: 94%;}
 
 .fluid { width: 100%; *zoom: 1; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; }
 .fluid:before, .fluid:after { display: table; content: ""; }
