@@ -515,7 +515,7 @@ body.category .home-feature-outer{border: none; height: 320px;}
 /* Footer */
 .footer-outer{margin-top: 69px;}
 .footer-inner{padding-bottom: 30px;}
-.footer-line{background: url('../img/footer-line.png') no-repeat; margin: auto; height: 13px; margin-bottom: 20px;}
+.footer-line{background: url('../img/footer-line.png'); margin: auto; height: 13px; margin-bottom: 20px;}
 .footer-intro{margin-bottom: 40px;}
 .footer-intro .intro-title{font-size: 18px; color: #2d2d2d; padding-bottom: 5px;}
 .footer-intro .intro-description{font-size: 13px; color: #686868; line-height: 20px;}

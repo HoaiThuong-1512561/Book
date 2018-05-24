@@ -1,3 +1,26 @@
+{{#section 'js'}}
+	<script src="/assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript">
+		$('#txtDOB').datepicker({
+			format: 'd/m/yyyy',
+			autoclose: true
+		});
+		var validate = function() {
+		    if ($('#txtUsername').val().length === 0) {
+		        alert('Error');
+		        return false;
+		    }
+
+		    if ($('#txtPWD').val() !== $('#txtCPWD').val()) {
+		        alert('not match');
+		        return false;
+		    }
+
+		    return true;
+		}
+	</script>
+{{/section}}
+
 <div class="lzd-playground">
     <div class="lzd-playground-main">
         <div class="lzd-playground-nav"></div>
@@ -6,12 +29,12 @@
                 <div class="login-title">
                     <h3>Tạo tài khoản BookStore</h3>
                     <div class="login-other">
-                            <span>Đã là thành viên?
-                                <a href="dang-nhap.html">Đăng nhập</a> tại đây</span>
+                        <span>Đã là thành viên?
+                            <a href="dang-nhap.html">Đăng nhập</a> tại đây</span>
                     </div>
                 </div>
                 <div>
-                    <form data-spm-anchor-id="a2o4n.login_signup.0.i3.46e5705bhNQK0x">
+                    <form action="" method="POST" role="form" onsubmit="return validate();" data-spm-anchor-id="a2o4n.login_signup.0.i3.46e5705bhNQK0x">
                         <div class="mod-login">
                             <div class="mod-login-col1">
                                 <div class="mod-input mod-login-input-email mod-input-email">
@@ -40,13 +63,11 @@
                                         <div class="mod-birthday">
                                             <div class="mod-birthday-hd">Ngày sinh</div>
                                             <div class="mod-birthday-bd">
-                                                <input style="height: 20px;border-radius: 8px;" type="date" />
-
-
+                                                
+                                                <input type="text" class="form-control" id="txtDOB" placeholder="d/m/yyyy" name="dob">
                                                 <div class="mod-input hidden mod-birthday-birthday mod-input-birthday">
                                                     <label>Ngày sinh</label>
-                                                    <input type="hidden" data-meta="Field" value="">
-                                                    <b></b>
+
                                                     <span></span>
                                                 </div>
                                             </div>
@@ -57,11 +78,11 @@
                                         <div class="mod-gender">
                                             <div class="mod-gender-hd">Giới tính</div>
                                             <span data-meta="Field" id="gender" class="next-select large mod-fusion-select mod-gender-gender" tabindex="0">
-                                                    <input type="hidden" name="select-faker" value="">
-                                                    <span class="next-select-inner">
-                                                        <span class="next-select-placeholder">Chọn</span>
-                                                    </span>
+                                                <input type="hidden" name="select-faker" value="">
+                                                <span class="next-select-inner">
+                                                    <span class="next-select-placeholder">Chọn</span>
                                                 </span>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -87,3 +108,5 @@
         </div>
     </div>
 </div>
+
+

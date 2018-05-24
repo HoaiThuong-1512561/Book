@@ -156,14 +156,13 @@ a{
     color: #666666;
 }
 .register{
-    display: inline-block;
     white-space: nowrap;
     cursor: pointer;
     vertical-align: top;
     font-size: 13px;
     padding: 6px 47px;
     border-radius: 5px;
-    background: rgba(255,57,69,1);
+    background: rgb(236, 226, 226);
     font-weight: 400;
     letter-spacing: .5px;
     background-size: 26px;
@@ -171,7 +170,7 @@ a{
     margin-top: 25px;
 }
 .register:hover{
-    background-color: rgba(255,57,69,.8);
+    background-color:#ffddee;
 }
 .header-form{
     background-color: #189eff;
