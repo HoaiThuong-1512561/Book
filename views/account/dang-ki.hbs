@@ -1,25 +1,35 @@
-{{#section 'js'}}
-	<script src="/assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-	<script type="text/javascript">
-		$('#txtDOB').datepicker({
-			format: 'd/m/yyyy',
-			autoclose: true
-		});
-		var validate = function() {
-		    if ($('#txtUsername').val().length === 0) {
-		        alert('Error');
-		        return false;
-		    }
+ {{#section 'js'}}
+<script type="text/javascript">
 
-		    if ($('#txtPWD').val() !== $('#txtCPWD').val()) {
-		        alert('not match');
-		        return false;
-		    }
+    var validate = function () {
+        if ($('#txtUsername').val().length === 0) {
+            alert('Vui lòng nhập tên đăng nhập');
+            return false;
+        }
+        if ($('#txtPWD').val().length < 6) {
+            alert('Mật khẩu ít nhất 6 kí tự');
+            return false;
+        }
+        if ($('#txtPWD').val() !== $('#txtCPWD').val()) {
+            alert('2 mật khẩu không trùng nhau');
+            return false;
+        }
 
-		    return true;
-		}
-	</script>
-{{/section}}
+        return true;
+    }
+</script> {{/section}}
+{{#if showError}}
+<div class="alert alert-danger">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<strong>Title!</strong> {{errorMsg}}
+</div>
+{{/if}}
+{{#if Success}}
+<div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<strong>Success!</strong> {{Msg}}
+</div>
+{{/if}}
 
 <div class="lzd-playground">
     <div class="lzd-playground-main">
@@ -34,69 +44,50 @@
                     </div>
                 </div>
                 <div>
-                    <form action="" method="POST" role="form" onsubmit="return validate();" data-spm-anchor-id="a2o4n.login_signup.0.i3.46e5705bhNQK0x">
+                    <form action="" method="POST" role="form" onsubmit="return validate();">
                         <div class="mod-login">
                             <div class="mod-login-col1">
                                 <div class="mod-input mod-login-input-email mod-input-email">
-                                    <label>Địa chỉ email</label>
-                                    <input type="text" placeholder="Vui lòng nhập email của bạn" data-meta="Field" value="">
+                                    <label>Tên đăng nhập</label>
+                                    <input id="txtUsername" type="text" placeholder="Tên đăng nhập" name="username">
                                     <b></b>
                                     <span></span>
                                 </div>
                                 <div class="mod-input mod-input-password mod-login-input-password mod-input-password">
                                     <label>Mật khẩu</label>
-                                    <input type="password" placeholder="Tối thiểu 6 kí tự bao gồm cả chữ và số" data-meta="Field" value="">
+                                    <input id="txtPWD" type="password" placeholder="Tối thiểu 6 kí tự bao gồm cả chữ và số" data-meta="Field" name="pass">
                                     <b></b>
                                     <span></span>
 
                                 </div>
                                 <div class="mod-input mod-input-password mod-login-input-re-password mod-input-re-password">
                                     <label>Nhập lại mật khẩu</label>
-                                    <input type="password" placeholder="Vui lòng nhập lại mật khẩu" data-meta="Field" value="">
+                                    <input id="txtCPWD" type="password" placeholder="Vui lòng nhập lại mật khẩu" data-meta="Field" name="repass">
                                     <b></b>
                                     <span></span>
-
-                                </div>
-                                <div class="mod-login-row clearfix">
-                                    <div class="mod-login-birthday clearfix">
-                                        <div class="mod-login-birthday-hd">Ngày sinh</div>
-                                        <div class="mod-birthday">
-                                            <div class="mod-birthday-hd">Ngày sinh</div>
-                                            <div class="mod-birthday-bd">
-                                                
-                                                <input type="text" class="form-control" id="txtDOB" placeholder="d/m/yyyy" name="dob">
-                                                <div class="mod-input hidden mod-birthday-birthday mod-input-birthday">
-                                                    <label>Ngày sinh</label>
-
-                                                    <span></span>
-                                                </div>
-                                            </div>
-                                            <span class="mod-birthday-error"></span>
-                                        </div>
-                                    </div>
-                                    <div class="mod-login-gender">
-                                        <div class="mod-gender">
-                                            <div class="mod-gender-hd">Giới tính</div>
-                                            <span data-meta="Field" id="gender" class="next-select large mod-fusion-select mod-gender-gender" tabindex="0">
-                                                <input type="hidden" name="select-faker" value="">
-                                                <span class="next-select-inner">
-                                                    <span class="next-select-placeholder">Chọn</span>
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="mod-login-col2">
                                 <div class="mod-input mod-login-input-name mod-input-name">
-                                    <label>Tên</label>
-                                    <input type="text" placeholder="Họ Tên" data-meta="Field" value="">
+                                    <label>Họ tên</label>
+                                    <input type="text" placeholder="Họ Tên" data-meta="Field" name="fullname">
                                     <b></b>
                                     <span></span>
                                 </div>
-
+                                <div class="mod-input mod-login-input-name mod-input-name">
+                                    <label>Địa chỉ</label>
+                                    <input type="text" placeholder="Địa chỉ" data-meta="Field" name="address">
+                                    <b></b>
+                                    <span></span>
+                                </div>
+                                <div class="mod-input mod-login-input-name mod-input-name">
+                                    <label>Số điện thoại</label>
+                                    <input maxlength="11" type="number" placeholder="Số điện thoại" name="phone">
+                                    <b></b>
+                                    <span></span>
+                                </div>
                                 <div class="mod-login-btn">
-                                    <button type="submit" class="next-btn next-btn-primary next-btn-large">ĐĂNG KÍ</button>
+                                    <button onclick="validate()" type="submit" class="next-btn next-btn-primary next-btn-large">ĐĂNG KÍ</button>
                                 </div>
 
 
@@ -108,5 +99,3 @@
         </div>
     </div>
 </div>
-
-
