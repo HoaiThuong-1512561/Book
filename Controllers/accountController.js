@@ -1,3 +1,6 @@
+
+
+
 var express = require('express');
 var SHA256 = require('crypto-js/sha256');
 var accountRepo = require('../repos/accountRepo');
@@ -54,13 +57,19 @@ router.post('/login', (req, res) => {
     accountRepo.login(user).then(rows => {
         if (rows.length > 0) {
             req.session.isLogged = true;
-            res.redirect('/');
+             res.redirect('/');
+            // res.render('_layouts/main');
+
         } else {
+
             var vm = {
                 showError: true,
-                errorMsg: 'Login failed'
+                errorMsg: 'Tên hoặc mật khẩu không đúng.',
+                layoutVM: res.locals.layoutVM,
             };
-            res.render('account/login', vm);
+
+
+            res.render('account/dang-nhap', vm);
         }
     });
 });

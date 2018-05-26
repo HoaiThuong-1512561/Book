@@ -94,19 +94,29 @@
                             <span class="fl">Theo dõi
                                 <br>đơn hàng</span>
                         </a>
+
                         <div class="header-link-list fl">
                             <img src="/image/user.png" class="h-icon fl">
+
+                        {{#if layoutVM.isLogged}}
+                            <span class="fl">Xin chào{{layoutVM.username}}
+                                <br>
+                                <small>Tài khoản và đơn hàng</small>
+                            </span>
+                            {{else}}
                             <span class="fl">Đăng nhập
                                 <br>
                                 <small>Tài khoản và đơn hàng</small>
                             </span>
+
                             <div class="h-box clearfloat">
                                 <div class="h-arrow-up fl">
                                     <span></span>
                                 </div>
                                 <div class="h-box-wrap fl">
-                                    <a href="account/login" class="h-box-li h-box-l1 userShow1" title="Đăng nhập">Đăng nhập</a>
-                                    <a href="account/register" class="h-box-li h-box-l1 userShow2" title="Tạo tài khoản mới">Tạo tài khoản</a>
+                                    <a href="/account/login" class="h-box-li h-box-l1 userShow1" title="Đăng nhập">Đăng nhập</a>
+                                    <a href="/account/register" class="h-box-li h-box-l1 userShow2" title="Tạo tài khoản mới">Tạo tài khoản</a>
+
                                     <!--<a href="" class="h-box-li h-box-f clearfloat" title="Đăng nhập bằng Facebook">-->
                                     <!--<span class="fl h-box-icon"><img src="/image/facebook.png"></span>-->
                                     <!--<span class="h-box-li-text fl">Đăng nhập bằng Facebook</span>-->
@@ -121,6 +131,7 @@
                                     <!--</a>-->
                                 </div>
                             </div>
+                        {{/if}}
                         </div>
                         <div class="cart fl">
                             <a href="cart.html" target="_blank">
