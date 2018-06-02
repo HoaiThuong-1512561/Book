@@ -21,43 +21,27 @@ exports.single = (id) => {
             reject(err);
         });
     });
-}
-// SELECT DISTINCT StudentID, student_sport.SportID
-// FROM student_sport
-// -- Search all sport played in a match and plays by the student
-// -- (common values sportid btw student_sport & matches)
-// INNER JOIN matches on student_sport.SportID = matches.SportID
-// WHERE
-// -- Select the appropriate player
-// student_sport.StudentID = @StudentID
-// exports.single = (id) => {
-//     return new Promise((resolve, reject) => {
-//         var sql = `select * from NhaSX where idNhaSX = ${id}`;
-//         db.load(sql).then(rows => {
-//             if (rows.length === 0) {
-//                 resolve(null);
-//             } else {
-//                 resolve(rows[0]);
-//             }
-//         }).catch(err => {
-//             reject(err);
-//         });
-//     });
-// }
-//
-// exports.single = (id) => {
-//     return new Promise((resolve, reject) => {
-//         var sql = `select * from Loai where idLoai = ${id}`;
-//         db.load(sql).then(rows => {
-//             if (rows.length === 0) {
-//                 resolve(null);
-//             } else {
-//                 resolve(rows[0]);
-//             }
-//         }).catch(err => {
-//             reject(err);
-//         });
-//     });
-// }
+};
+
+
+exports.add = (c) => {
+    var sql = `insert into Book(ten_sach,tac_gia,giaBan,idNhaSX,idLoai) values('${c.ten_sach}','${c.tac_gia}','${c.giaBan}','${c.idNhaSX}','${c.idLoai}')`;
+    return db.save(sql);
+};
+
+exports.delete = (id) => {
+    var sql = `delete from Book where idSach = ${id}`;
+    return db.save(sql);
+};
+
+exports.update = (c) => {
+    var sql = `update Book 
+    set ten_sach = '${c.ten_sach}' 
+    
+    where idSach = ${c.id}`;
+
+    // var sql = `update categories set CatName = '${c.CatName}' where CatID = ${c.CatId}`;
+    return db.save(sql);
+};
 
 

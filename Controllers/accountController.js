@@ -65,7 +65,7 @@ router.post('/login', (req, res) => {
             var vm = {
                 showError: true,
                 errorMsg: 'Tên hoặc mật khẩu không đúng.',
-                layoutVM: res.locals.layoutVM,
+               // layoutVM: res.locals.layoutVM,
             };
 
 

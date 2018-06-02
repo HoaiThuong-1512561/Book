@@ -15,6 +15,7 @@ var SPController = require('./Controllers/SPController');
 var HomeController = require('./Controllers/HomeController');
 var ProductController = require('./Controllers/ProductController');
 var accountController = require('./Controllers/accountController');
+var categoryController = require('./Controllers/categoryController');
 
 var app = express();
 var session = require('express-session');
@@ -22,11 +23,11 @@ var MySQLStore = require('express-mysql-session')(session);
 
 //session
 var sessionStore = new MySQLStore({
-    host: 'db4free.net',
+    host: '127.0.0.1',
     port: 3306,
-    user: 'doanwebck',
-    password: 'doanwebck',
-    database: 'doanwebck',
+    user: 'root',
+    password: 'tutrinhtt',
+    database: 'doanweb_ck',
     createDatabaseTable: true,
     schema: {
         tableName: 'sessions',
@@ -76,6 +77,7 @@ app.use(bodyParser.urlencoded({
 app.use('/', HomeController);
 app.use('/sample_product', ProductController);
 app.use('/SP', SPController);
-
 app.use('/account', accountController);
+
+app.use('/tim-kiem', categoryController);
 app.listen(3000);
