@@ -10,7 +10,7 @@ exports.loadAll = () => {
 // inner join NhaSX on Book.idNhaSX = NhaSX=idNhaSX
 exports.single = (id) => {
     return new Promise((resolve, reject) => {
-        var sql = `select * from Book where idSach = ${id}`;
+        var sql = `select * from Book,NhaSX,Loai where idSach = ${id} and Book.idNhaSX=NhaSX.idNhaSX and Book.idLoai=Loai.idLoai`;
         db.load(sql).then(rows => {
             if (rows.length === 0) {
                 resolve(null);
@@ -35,12 +35,16 @@ exports.delete = (id) => {
 };
 
 exports.update = (c) => {
-    var sql = `update Book 
-    set ten_sach = '${c.ten_sach}' 
-    
-    where idSach = ${c.id}`;
+    var sql = `update Book set tac_gia = '${c.tac_gia}',ten_sach = '${c.ten_sach}',
+    								
+    								giaBan ='${c.giaBan}' ,
+    								idNhaSX = '${c.idNhaSX}',
+    								idLoai = '${c.idLoai}'
+    								
+    								 where idSach = ${c.idSach}`;
+    // console.log(sql);
 
-    // var sql = `update categories set CatName = '${c.CatName}' where CatID = ${c.CatId}`;
+
     return db.save(sql);
 };
 

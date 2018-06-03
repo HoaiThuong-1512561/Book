@@ -9,13 +9,16 @@ var path = require('path');
 var handleLayoutMDW = require('./middle-wares/handleLayout'),
     handle404MDW = require('./middle-wares/handle404');
 
-   
+var handleLayoutMDW = require('./middle-wares/handleLayout'),
+    handle404MDW = require('./middle-wares/handle404'),
+    restrict = require('./middle-wares/restrict');
 
 var SPController = require('./Controllers/SPController');
 var HomeController = require('./Controllers/HomeController');
 var ProductController = require('./Controllers/ProductController');
 var accountController = require('./Controllers/accountController');
 var categoryController = require('./Controllers/categoryController');
+var cartController = require('./controllers/cartController');
 
 var app = express();
 var session = require('express-session');
@@ -78,6 +81,7 @@ app.use('/', HomeController);
 app.use('/sample_product', ProductController);
 app.use('/SP', SPController);
 app.use('/account', accountController);
-
+app.use('/cart', restrict, cartController);
+app.use(handle404MDW);
 app.use('/tim-kiem', categoryController);
 app.listen(3000);

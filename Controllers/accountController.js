@@ -3,6 +3,8 @@
 
 var express = require('express');
 var SHA256 = require('crypto-js/sha256');
+var moment = require('moment');
+
 var accountRepo = require('../repos/accountRepo');
 var restrict = require('../middle-wares/restrict');
 
@@ -57,8 +59,14 @@ router.post('/login', (req, res) => {
     accountRepo.login(user).then(rows => {
         if (rows.length > 0) {
             req.session.isLogged = true;
-             res.redirect('/');
-            // res.render('_layouts/main');
+            req.session.user = rows[0];
+            req.session.cart = [];
+             // res.redirect('/');
+            var url = '/';
+            if (req.query.retUrl) {
+                url = req.query.retUrl;
+            }
+            res.redirect(url);
 
         } else {
 
@@ -77,5 +85,10 @@ router.post('/login', (req, res) => {
 router.get('/profile', restrict, (req, res) => {
     res.render('account/profile');
 });
-
+router.post('/logout', (req, res) => {
+    req.session.isLogged = false;
+    req.session.user = null;
+    // req.session.cart = [];
+    res.redirect(req.headers.referer);
+});
 module.exports = router;

@@ -98,40 +98,46 @@
                         <div class="header-link-list fl">
                             <img src="/image/user.png" class="h-icon fl">
 
-                        {{#if layoutVM.isLogged}}
-                            <span class="fl">Xin chào{{layoutVM.username}}
-                                <br>
-                                <small>Tài khoản và đơn hàng</small>
-                            </span>
-                            {{else}}
-                            <span class="fl">Đăng nhập
-                                <br>
-                                <small>Tài khoản và đơn hàng</small>
-                            </span>
+                                {{#if layoutVM.isLogged}}
+                                    <form id="frmLogout" method="post" action="/account/logout"></form>
+                                    <li><a href="/cart">Shopping Cart (0 items)</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{layoutVM.curUser.userName}} <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Profile</a></li>
+                                            <li><a id="lnkLogout" href="javascript:;">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                {{else}}
+                                    <li><a href="/account/login">Login</a></li>
+                                    <li><a href="/account/register">Register</a></li>
+                                {{/if}}
 
-                            <div class="h-box clearfloat">
-                                <div class="h-arrow-up fl">
-                                    <span></span>
-                                </div>
-                                <div class="h-box-wrap fl">
-                                    <a href="/account/login" class="h-box-li h-box-l1 userShow1" title="Đăng nhập">Đăng nhập</a>
-                                    <a href="/account/register" class="h-box-li h-box-l1 userShow2" title="Tạo tài khoản mới">Tạo tài khoản</a>
 
-                                    <!--<a href="" class="h-box-li h-box-f clearfloat" title="Đăng nhập bằng Facebook">-->
-                                    <!--<span class="fl h-box-icon"><img src="/image/facebook.png"></span>-->
-                                    <!--<span class="h-box-li-text fl">Đăng nhập bằng Facebook</span>-->
-                                    <!--</a>-->
-                                    <!--<a href="" class="h-box-li h-box-g" title="Đăng nhập bằng Google">-->
-                                    <!--<span class="fl h-box-icon"><img src="/image/google26.png"></span>-->
-                                    <!--<span class="h-box-li-text fl">Đăng nhập bằng Google</span>-->
-                                    <!--</a>-->
-                                    <!--<a href="" class="h-box-li h-box-z" title="Đăng nhập bằng Zalo">-->
-                                    <!--<span class="fl h-box-icon"><img src="/image/zalo.png"></span>-->
-                                    <!--<span class="h-box-li-text fl">Đăng nhập bằng Zalo</span>-->
-                                    <!--</a>-->
-                                </div>
-                            </div>
-                        {{/if}}
+                        <!--{{#if layoutVM.isLogged}}-->
+                            <!--<span class="fl">Xin chào{{layoutVM.username}}-->
+                                <!--<br>-->
+                                <!--<small>Tài khoản và đơn hàng</small>-->
+                            <!--</span>-->
+                            <!--{{else}}-->
+                            <!--<span class="fl">Đăng nhập-->
+                                <!--<br>-->
+                                <!--<small>Tài khoản và đơn hàng</small>-->
+                            <!--</span>-->
+
+                            <!--<div class="h-box clearfloat">-->
+                                <!--<div class="h-arrow-up fl">-->
+                                    <!--<span></span>-->
+                                <!--</div>-->
+                                <!--<div class="h-box-wrap fl">-->
+                                    <!--<a href="/account/login" class="h-box-li h-box-l1 userShow1" title="Đăng nhập">Đăng nhập</a>-->
+                                    <!--<a href="/account/register" class="h-box-li h-box-l1 userShow2" title="Tạo tài khoản mới">Tạo tài khoản</a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--{{/if}}-->
+
+
+
                         </div>
                         <div class="cart fl">
                             <a href="cart.html" target="_blank">
@@ -167,10 +173,10 @@
                                             <a href="ngoai-ngu.html">
                                                 <b>Thể loại</b>
                                             </a>
-{{#each categories}}
-    <a href="{{VanHoc}}.html">{{VanHoc}}</a>
+                                        {{#each categories}}
+                                            <a href="{{VanHoc}}.html">{{VanHoc}}</a>
 
-{{/each}}
+                                        {{/each}}
 
 
 
@@ -507,6 +513,11 @@
     </div>
     <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script> {{{_sections.js}}}
+    <script type="text/javascript">
+        $('#lnkLogout').on('click', function() {
+            $('#frmLogout').submit();
+        });
+    </script>
 </body>
 
 </html>

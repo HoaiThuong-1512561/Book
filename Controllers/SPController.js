@@ -52,10 +52,14 @@ router.post('/delete', (req, res) => {
 
 router.get('/edit', (req, res) => {
     SPRePo.single(req.query.id).then(c => {
-        // console.log(c);
+
         var vm = {
-            Book: c
-        };
+            Book: c,
+            NhaSX: c,
+            Loai: c
+
+    };
+
         res.render('SP/edit', vm);
     });
 });
