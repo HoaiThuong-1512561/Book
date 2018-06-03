@@ -6,44 +6,38 @@ var cartRepo = require('../repos/cartRepo'),
     productRepo = require('../repos/ProductRepo');
 
 var router = express.Router();
-
 router.get('/', (req, res) => {
-
-    var arr_p = [];
-    for (var i = 0; i < req.session.cart.length; i++) {
-        var cartItem = req.session.cart[i];
-        var p = productRepo.single(cartItem.ProId);
-        arr_p.push(p);
-    }
-
-    var items = [];
-    Promise.all(arr_p).then(result => {
-        for (var i = result.length - 1; i >= 0; i--) {
-            var pro = result[i][0];
-            var item = {
-                Product: pro,
-                Quantity: req.session.cart[i].Quantity,
-                Amount: pro.Price * req.session.cart[i].Quantity
-            };
-            items.push(item);
-        }
-
         var vm = {
-            items: items
+            items: req.session.cart,
+            total: cartRepo.getTotal(req.session.cart),
+            isEmpty: req.session.cart.length === 0,
         };
         res.render('cart/index', vm);
-    });
 });
 
-// router.post('/add', (req, res) => {
-//     var item = {
-//         ProId: req.body.proId,
-//         Quantity: +req.body.quantity
-//     };
-//
-//     cartRepo.add(req.session.cart, item);
-//     res.redirect(req.headers.referer);
-// });
+
+
+
+router.post('/add', (req, res) => {
+    productRepo.loadDetail(req.body.idSach).then(function(pro) {
+
+        var item = {
+            product: {
+                idSach: pro.idSach,
+                // ten_sach: pro.ten_sach,
+                // giaBan: pro.giaBan,
+            },
+            sl: +req.body.sl,
+            amount: pro.idSach * +req.body.sl
+        };
+
+});
+    cartRepo.add(req.session.cart, item);
+     // res.redirect(req.headers.referer);
+    res.redirect('/sample_product/' + req.body.idSach);
+});
+
+
 //
 // router.post('/remove', (req, res) => {
 //     cartRepo.remove(req.session.cart, req.body.ProId);

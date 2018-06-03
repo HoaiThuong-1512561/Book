@@ -88,7 +88,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="header-link fr">
+                    <div class="header-link fr" >
                         <a href="" class="header-link-list fl">
                             <img src="/image/order.png" class="h-icon fl" title="Kiểm tra trạng thái Đơn hàng của bạn">
                             <span class="fl">Theo dõi
@@ -96,56 +96,56 @@
                         </a>
 
                         <div class="header-link-list fl">
+                        {{#if layoutVM.isLogged}}
+                            <form id="frmLogout" method="post" action="/account/logout"></form>
                             <img src="/image/user.png" class="h-icon fl">
+                            <span class="fl">Xin chào {{layoutVM.curUser.userName}}
+                                <br>
+                                  <li><a id="lnkLogout" href="javascript:;"><small>Logout</small></a></li>
 
-                                {{#if layoutVM.isLogged}}
-                                    <form id="frmLogout" method="post" action="/account/logout"></form>
-                                    <li><a href="/cart">Shopping Cart (0 items)</a></li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{layoutVM.curUser.userName}} <b class="caret"></b></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Profile</a></li>
-                                            <li><a id="lnkLogout" href="javascript:;">Logout</a></li>
-                                        </ul>
-                                    </li>
-                                {{else}}
-                                    <li><a href="/account/login">Login</a></li>
-                                    <li><a href="/account/register">Register</a></li>
-                                {{/if}}
-
-
-                        <!--{{#if layoutVM.isLogged}}-->
-                            <!--<span class="fl">Xin chào{{layoutVM.username}}-->
-                                <!--<br>-->
-                                <!--<small>Tài khoản và đơn hàng</small>-->
-                            <!--</span>-->
-                            <!--{{else}}-->
-                            <!--<span class="fl">Đăng nhập-->
-                                <!--<br>-->
-                                <!--<small>Tài khoản và đơn hàng</small>-->
-                            <!--</span>-->
-
-                            <!--<div class="h-box clearfloat">-->
-                                <!--<div class="h-arrow-up fl">-->
-                                    <!--<span></span>-->
-                                <!--</div>-->
-                                <!--<div class="h-box-wrap fl">-->
-                                    <!--<a href="/account/login" class="h-box-li h-box-l1 userShow1" title="Đăng nhập">Đăng nhập</a>-->
-                                    <!--<a href="/account/register" class="h-box-li h-box-l1 userShow2" title="Tạo tài khoản mới">Tạo tài khoản</a>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--{{/if}}-->
-
-
-
+                            </span>
                         </div>
-                        <div class="cart fl">
-                            <a href="cart.html" target="_blank">
-                                <img src="/image/cart.png" class="h-icon">
-                                <span>Giỏ hàng</span>
-                                <span class="cart-q">0</span>
-                            </a>
+                            <div class="header-link fr" >
+                                <div class="cart fl">
+                                    <a href="/cart" target="_blank">
+                                        <img src="/image/cart.png" class="h-icon">
+                                        <span>Giỏ hàng</span>
+                                        <span class="cart-q">0</span>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            {{else}}
+                            <span class="fl">Đăng nhập
+                                <br>
+                                <small>Tài khoản</small>
+                            </span>
+
+                            <div class="h-box clearfloat">
+                                <div class="h-arrow-up fl">
+                                    <span></span>
+                                </div>
+                                <div class="h-box-wrap fl">
+                                    <a href="/account/login" class="h-box-li h-box-l1 userShow1" title="Đăng nhập">Đăng nhập</a>
+                                    <a href="/account/register" class="h-box-li h-box-l1 userShow2" title="Tạo tài khoản mới">Tạo tài khoản</a>
+                                </div>
+                            </div>
                         </div>
+                            <div class="header-link fr" >
+                                <div class="cart fl">
+                                    <a href="/cart" target="_blank">
+                                        <img src="/image/cart.png" class="h-icon">
+                                        <span>Giỏ hàng</span>
+                                        <span class="cart-q">0</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        {{/if}}
+
+
+
                     </div>
                 </div>
             </div>
@@ -175,10 +175,7 @@
                                             </a>
                                         {{#each categories}}
                                             <a href="{{VanHoc}}.html">{{VanHoc}}</a>
-
                                         {{/each}}
-
-
 
                                         </li>
                                         <li class="nav-sub-li fl">

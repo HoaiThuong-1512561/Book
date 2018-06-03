@@ -6,8 +6,6 @@ var wnumb = require('wnumb');
 
 var path = require('path');
 
-var handleLayoutMDW = require('./middle-wares/handleLayout'),
-    handle404MDW = require('./middle-wares/handle404');
 
 var handleLayoutMDW = require('./middle-wares/handleLayout'),
     handle404MDW = require('./middle-wares/handle404'),
@@ -75,7 +73,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
-
+app.use(handleLayoutMDW);
 
 app.use('/', HomeController);
 app.use('/sample_product', ProductController);

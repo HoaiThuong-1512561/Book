@@ -7,7 +7,6 @@ exports.loadAll = () => {
     var sql = 'select * from Book,NhaSX,Loai where Book.idNhaSX=NhaSX.idNhaSX and Book.idLoai=Loai.idLoai';
     return db.load(sql);
 }
-// inner join NhaSX on Book.idNhaSX = NhaSX=idNhaSX
 exports.single = (id) => {
     return new Promise((resolve, reject) => {
         var sql = `select * from Book,NhaSX,Loai where idSach = ${id} and Book.idNhaSX=NhaSX.idNhaSX and Book.idLoai=Loai.idLoai`;
@@ -25,7 +24,7 @@ exports.single = (id) => {
 
 
 exports.add = (c) => {
-    var sql = `insert into Book(ten_sach,tac_gia,giaBan,idNhaSX,idLoai) values('${c.ten_sach}','${c.tac_gia}','${c.giaBan}','${c.idNhaSX}','${c.idLoai}')`;
+    var sql = `insert into Book(ten_sach,tac_gia,giaBan,idNhaSX,idLoai,sl) values('${c.ten_sach}','${c.tac_gia}','${c.giaBan}','${c.idNhaSX}','${c.idLoai}','${c.sl}')`;
     return db.save(sql);
 };
 

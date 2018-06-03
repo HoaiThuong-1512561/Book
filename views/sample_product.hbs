@@ -1,7 +1,6 @@
 <div class="body-outer fluid fluid-nomargin container clearfix">
     <div class="primary-outer">
         <div class="single-header fluid fluid-nomargin clearfix">
-
             <div class="grid8">
                 <ul class="breadcrumb no-style" xmlns:v="http://rdf.data-vocabulary.org/#">
                     <li typeof="v:Breadcrumb">
@@ -52,10 +51,7 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="col-md-7">
-
                 <div class="item-box">
                     <h1 class="item-name" itemprop="name" style="font-size: 36px;">
                         {{ten_sach}} </h1>
@@ -72,14 +68,10 @@
                                     <em>Bìa Mềm</em>
                                 </span>
                             </div>
-
-
-
                             <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
                                 <meta itemprop="priceCurrency" content="VND">
                                 <meta itemprop="price" content="26000">
                             </div>
-
                             <p class="old-price-item" data-value="35000" id="p-listpirce">
                                 <span>Giá bìa:</span>
                                 <span>{{giaBan}}&nbsp;₫</span>
@@ -123,18 +115,11 @@
                         </div>
                     </div>
                     <div class="item-promotion">
-
                         <div class="item-promotion-title">
                             <h2>Thông tin &amp; Khuyến mãi</h2>
                         </div>
-
                         <div class="item-promotion-content">
-
-
-
-
                             <ul class="no-left">
-
                                 <li>
                                     <p>Với mỗi
                                         <span style="color: #ff0000;">
@@ -217,49 +202,45 @@
                                     <span id="delivery_time" style="color: black">2 - 3 ngày</span> , không kể Thứ 7 &amp; CN.</li>
                             </ul>
                         </div>
-
-
-
-
                     </div>
-                    <form role="form" id="add-to-cart" action="/checkout/ajaxAdd">
+                    <!--<form role="form" id="add-to-cart" action="/checkout/ajaxAdd">-->
                         <input type="hidden" name="product_type" value="simple">
                         <div class="item-product-options">
                             <div class="quantity-box">
 
-                                <p class="quantity-label">Số lượng:</p>
-                                <div class="quantity-col1">
-                                    <p class="tiki-number-input">
+
+                                <form class="form-horizontal" id="frmAddItem" method="post" action="/cart/add">
+<!---->        <input type="hidden" id="txtP" name="proId" />
+
+
+                                    <div class="quantity-col2">
+                                    <p class="quantity-label">Số lượng:</p>
+                                    <div class="quantity-col1">
+                                        <p class="tiki-number-input">
                                         <div class="input-group bootstrap-touchspin">
                                             <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
-                                            <input id="qty" type="number" name="qty" value="1" min="1" max="100" class="form-control" style="display: block; color: red;">
+                                            <input id="sl" type="number" name="sl" value="1" min="1" max="100" class="form-control" style="display: block; color: red;">
                                             <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
                                         </div>
-                                    </p>
-                                </div>
-                                <input id="product_id_for_wishlist" name="id" type="hidden" value="90325">
-                                <div class="quantity-col2">
-                                    <button class="add-to-cart js-add-to-cart is-css" type="button" data-original-title="">
-                                        <span class="icon">
-                                            <i class="fa fa-shopping-cart"></i>
-                                        </span>
+                                        </p>
+                                    </div>
+                                    <input id="product_id_for_wishlist" name="idSach" type="hidden" value="{{idSach}}">
+                                    <button class="add-to-cart js-add-to-cart is-css" type="submit" data-original-title="">
                                         <span class="text">
                                             Thêm Vào Giỏ Hàng
                                         </span>
                                     </button>
                                     <button class="add-to-wishlist " type="button"></button>
+
                                 </div>
+                                </form>
                             </div>
                         </div>
-                    </form>
-
+                    <!--</form>-->
                 </div>
                 {{/each}}
-
             </div>
         </div>
-
-
         <div class="content-block-inner home-block category-content-slider">
             <div class="block-inner-bar block-inner-tab-outer clearfix">
                 <ul class="block-inner-tab float-left home-aj-tab">
@@ -305,11 +286,8 @@
                         </li>
                     </div>
                     {{/each}}
-
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
