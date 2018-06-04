@@ -22,19 +22,17 @@ router.post('/add', (req, res) => {
     productRepo.loadDetail(req.body.idSach).then(function(pro) {
 
         var item = {
-            product: {
-                idSach: pro.idSach,
+                idSach: req.body.idSach,
                 // ten_sach: pro.ten_sach,
                 // giaBan: pro.giaBan,
-            },
             sl: +req.body.sl,
-            amount: pro.idSach * +req.body.sl
+            amount: pro.sl * +req.body.sl
         };
 
-});
     cartRepo.add(req.session.cart, item);
-     // res.redirect(req.headers.referer);
-    res.redirect('/sample_product/' + req.body.idSach);
+        // res.redirect(req.headers.referer);
+      res.redirect('/sample_product/?id=' + req.body.idSach);
+});
 });
 
 

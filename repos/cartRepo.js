@@ -3,7 +3,7 @@
  */
 exports.add = (cart, item) => {
     for (i = cart.length - 1; i >= 0; i--) {
-        if (cart[i].product.idSach === item.product.idSach) {
+        if (cart[i].idSach === item.idSach) {
             cart[i].sl += item.sl;
             return;
         }

@@ -210,7 +210,8 @@
 
 
                                 <form class="form-horizontal" id="frmAddItem" method="post" action="/cart/add">
-<!---->        <input type="hidden" id="txtP" name="proId" />
+<!--&lt;!&ndash;&ndash;&gt;        <input type="hidden" id="txtP" name="proId" />-->
+                                    <input id="idSach" name="idSach" type="hidden" value="{{idSach}}">
 
 
                                     <div class="quantity-col2">
@@ -224,7 +225,6 @@
                                         </div>
                                         </p>
                                     </div>
-                                    <input id="product_id_for_wishlist" name="idSach" type="hidden" value="{{idSach}}">
                                     <button class="add-to-cart js-add-to-cart is-css" type="submit" data-original-title="">
                                         <span class="text">
                                             Thêm Vào Giỏ Hàng
