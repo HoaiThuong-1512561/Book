@@ -24,11 +24,11 @@ var MySQLStore = require('express-mysql-session')(session);
 
 //session
 var sessionStore = new MySQLStore({
-    host: '127.0.0.1',
+    host: 'db4free.net',
     port: 3306,
-    user: 'root',
-    password: 'tutrinhtt',
-    database: 'doanweb_ck',
+    user: 'doanwebck',
+    password: 'doanwebck',
+    database: 'doanwebck',
     createDatabaseTable: true,
     schema: {
         tableName: 'sessions',

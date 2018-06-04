@@ -20,3 +20,8 @@ exports.check = user => {
     var sql = `select * from NguoiDung where userName = '${user.username}'`;
     return db.load(sql);
 };
+
+exports.getCus = (idCus)=>{
+     var sql=`select * from KhachHang where idKhachHang='${idCus}'`;
+     return db.load(sql);
+};

@@ -83,8 +83,19 @@ router.post('/login', (req, res) => {
 });
 
 router.get('/profile', restrict, (req, res) => {
-    res.render('account/profile');
+    var idCus=req.session.user.idNguoiSuDung;
+    accountRepo.getCus(idCus).then(rows=>{
+        var vm={
+            name:rows[0].hoTen,
+            diachi: rows[0].diaChi,
+            sdt: rows[0].soDT
+        }
+        res.render('account/profile',vm);
+    });
 });
+
+
+
 router.post('/logout', (req, res) => {
     req.session.isLogged = false;
     req.session.user = null;

@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
             total: cartRepo.getTotal(req.session.cart),
             isEmpty: req.session.cart.length === 0,
         };
+        //console.log(vm);
         res.render('cart/index', vm);
 });
 
@@ -23,8 +24,9 @@ router.post('/add', (req, res) => {
 
         var item = {
                 idSach: req.body.idSach,
-                // ten_sach: pro.ten_sach,
-                // giaBan: pro.giaBan,
+                ten_sach: pro.ten_sach,
+                giaBan: pro.giaBan,
+                hinh:pro.hinhAnh,
             sl: +req.body.sl,
             amount: pro.sl * +req.body.sl
         };
