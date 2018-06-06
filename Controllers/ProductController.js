@@ -10,7 +10,8 @@ router.get('/', (req, res) => {
     Promise.all([p1,p2]).then(([newB,Views]) => {
         var vm = {
             products: newB,
-            byViews:Views
+            byViews:Views,
+            
         };
         res.render('sample_product', vm);
     });

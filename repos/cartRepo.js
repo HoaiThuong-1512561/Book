@@ -8,10 +8,18 @@ exports.add = (cart, item) => {
             return;
         }
     }
-
+    console.log(item);
     cart.push(item);
 };
-exports.getTotal = function(cart) {
+exports.remove=(cart, idSach) => {
+    for (i = cart.length - 1; i >= 0; i--) {
+        if (cart[i].idSach===idSach){
+            cart.splice(i,1);
+            return;
+        }
+    }
+};
+exports.getTotal = function (cart) {
     var total = 0;
     for (var i = 0; i < cart.length; i++) {
         total += cart[i].amount;

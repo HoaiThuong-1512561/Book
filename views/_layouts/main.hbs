@@ -99,7 +99,7 @@
                         {{#if layoutVM.isLogged}}
                             <form id="frmLogout" method="post" action="/account/logout"></form>
                             <img src="/image/user.png" class="h-icon fl">
-                            <span class="fl">Xin chào {{layoutVM.curUser.userName}}
+                            <span class="fl"><a href="/account/profile">Xin chào: {{layoutVM.curUser.userName}}</a>  
                                 <br>
                                   <li><a id="lnkLogout" href="javascript:;"><small>Logout</small></a></li>
 
@@ -110,7 +110,7 @@
                                     <a href="/cart" target="_blank">
                                         <img src="/image/cart.png" class="h-icon">
                                         <span>Giỏ hàng</span>
-                                        <span class="cart-q">0</span>
+                                        <span class="cart-q">{{layoutVM.totalCart}}</span>
                                     </a>
                                 </div>
                             </div>

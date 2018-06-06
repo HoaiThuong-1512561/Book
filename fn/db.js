@@ -7,10 +7,10 @@ var mysql = require('mysql');
 exports.load = sql => {
     return new Promise((resolve, reject) => {
             var cn = mysql.createConnection({
-                host: 'db4free.net',
+                host: 'localhost',
                 port: 3306,
-                user: 'doanwebck',
-                password: 'doanwebck',
+                user: 'root',
+                password: '01657409117',
                 database: 'doanwebck',
             });
 
@@ -31,10 +31,10 @@ exports.load = sql => {
 exports.save = sql => {
     return new Promise((resolve, reject) => {
             var cn = mysql.createConnection({
-                host: 'db4free.net',
+                host: 'localhost',
                 port: 3306,
-                user: 'doanwebck',
-                password: 'doanwebck',
+                user: 'root',
+                password: '01657409117',
                 database: 'doanwebck',
             });
 
