@@ -25,3 +25,17 @@ exports.getCus = (idCus)=>{
      var sql=`select * from KhachHang where idKhachHang='${idCus}'`;
      return db.load(sql);
 };
+exports.updatePhoneCus=user=>{
+    var sql = `UPDATE KhachHang SET soDT='${user.sdt}' WHERE idKhachHang = '${user.idCus}'`;
+    return db.save(sql);
+};
+
+exports.updateNameCus=user=>{
+    var sql = `UPDATE KhachHang SET hoTen='${user.hoten}' WHERE idKhachHang = '${user.idCus}'`;
+    return db.save(sql);
+};
+
+exports.updateAddressCus=user=>{
+    var sql = `UPDATE KhachHang SET diaChi='${user.diachi}' WHERE idKhachHang = '${user.idCus}'`;
+    return db.save(sql);
+};

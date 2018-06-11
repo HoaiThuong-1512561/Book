@@ -30,8 +30,6 @@ router.post('/', (req, res) => {
 
 });
 
-
-
 router.post('/add', (req, res) => {
     productRepo.loadDetail(req.body.idSach).then(rows => {
         var item = {

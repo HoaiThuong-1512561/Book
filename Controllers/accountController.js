@@ -6,6 +6,7 @@ var SHA256 = require('crypto-js/sha256');
 var moment = require('moment');
 
 var accountRepo = require('../repos/accountRepo');
+var payRepo=require('../repos/payRepo');
 var restrict = require('../middle-wares/restrict');
 
 var router = express.Router();
@@ -84,22 +85,60 @@ router.post('/login', (req, res) => {
 
 router.get('/profile', restrict, (req, res) => {
     var idCus=req.session.user.idNguoiSuDung;
+
+    var p1=payRepo.getPayment(idCus);
+    var p2=accountRepo.getCus(idCus);
+
+    Promise.all([p1, p2]).then(([pay, account]) => {
+        res.redirect('edit-info');
+    });
+
+    accountRepo.getCus(idCus).then(rows=>{
+        var vm={
+            name:rows[0].hoTen,
+            diachi: rows[0].diaChi,
+            sdt: rows[0].soDT,
+        }
+        console.log(vm);
+        res.render('account/profile',vm);
+    });
+});
+
+router.get('/edit-info',(req,res)=>{
+    var idCus=req.session.user.idNguoiSuDung;
     accountRepo.getCus(idCus).then(rows=>{
         var vm={
             name:rows[0].hoTen,
             diachi: rows[0].diaChi,
             sdt: rows[0].soDT
         }
-        res.render('account/profile',vm);
+        res.render('account/sua-tt',vm);
     });
 });
+router.post('/edit-info',(req,res)=>{
+    var user = {
+        hoten: req.body.name,
+        sdt: req.body.phonenumber,
+        diachi:req.body.address,
+        idCus:req.session.user.idNguoiSuDung
+    };
+    var p1=accountRepo.updateNameCus(user);
+    var p2=accountRepo.updatePhoneCus(user);
+    var p3=accountRepo.updateAddressCus(user);
 
-
+    Promise.all([p1, p2, p3]).then(([value1, value2, value3]) => {
+        res.redirect('edit-info');
+    });
+});
 
 router.post('/logout', (req, res) => {
     req.session.isLogged = false;
     req.session.user = null;
     // req.session.cart = [];
     res.redirect(req.headers.referer);
+});
+
+router.get('/order',(req,res)=>{
+    res.render('account/chi-tiet-dh');
 });
 module.exports = router;

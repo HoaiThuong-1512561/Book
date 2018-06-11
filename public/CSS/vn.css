@@ -806,9 +806,7 @@ a{
 .recommend-bts>li:hover{
     background-color: #f1f1f1;
 }
-.row{
-    padding: 40px 0 20px;
-}
+
 .row-container{
     width: 1140px;
     height: 45px;
