@@ -90,18 +90,25 @@ router.get('/profile', restrict, (req, res) => {
     var p2=accountRepo.getCus(idCus);
 
     Promise.all([p1, p2]).then(([pay, account]) => {
-        res.redirect('edit-info');
+        var vm={
+            donHang:pay,
+            name:account[0].hoTen,
+            diachi: account[0].diaChi,
+            sdt: account[0].soDT,
+        }
+        res.render('account/profile',vm);
+        
     });
 
-    accountRepo.getCus(idCus).then(rows=>{
-        var vm={
-            name:rows[0].hoTen,
-            diachi: rows[0].diaChi,
-            sdt: rows[0].soDT,
-        }
-        console.log(vm);
-        res.render('account/profile',vm);
-    });
+    // accountRepo.getCus(idCus).then(rows=>{
+    //     var vm={
+    //         name:rows[0].hoTen,
+    //         diachi: rows[0].diaChi,
+    //         sdt: rows[0].soDT,
+    //     }
+    //     console.log(vm);
+    //     res.render('account/profile',vm);
+    // });
 });
 
 router.get('/edit-info',(req,res)=>{
@@ -134,7 +141,7 @@ router.post('/edit-info',(req,res)=>{
 router.post('/logout', (req, res) => {
     req.session.isLogged = false;
     req.session.user = null;
-    // req.session.cart = [];
+    //req.session.cart = [];
     res.redirect(req.headers.referer);
 });
 

@@ -42,30 +42,17 @@
                                         <td>Tổng tiền</td>
                                         <td>Chi tiết</td>
                                     </tr>
+                                    {{#each donHang}}
                                     <tr>
-                                        <td>1233</td>
-                                        <td>2017-05-25 19:16:15 </td>
-                                        <td>572000 </td>
+                                        <td>{{idThanhToan}}</td>
+                                        <td>{{ngayDatHang}}</td>
+                                        <td>{{tongGia}} </td>
                                         <td>
                                             <a href="order">Xem </a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>27 </td>
-                                        <td>2017-04-21 12:10:45  </td>
-                                        <td>200000 </td>
-                                        <td>
-                                            <a href="chi-tiet-dh.html">Xem </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>121 </td>
-                                        <td>2017-02-2 8:10:30</td>
-                                        <td>420000 </td>
-                                        <td>
-                                            <a href="chi-tiet-dh.html">Xem </a>
-                                        </td>
-                                    </tr>
+                                    {{/each}}
+                                    
                                     </tbody>
                                 </table>
                             </div>
