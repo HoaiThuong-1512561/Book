@@ -4,17 +4,16 @@
 var express = require('express');
 var cartRepo = require('../repos/cartRepo'),
     productRepo = require('../repos/ProductRepo'),
-    accountRepo = require('../repos/accountRepo'),
-    payRepo = require('../repos/payRepo');
+    accountRepo=require('../repos/accountRepo');
 var router = express.Router();
 router.get('/', (req, res) => {
-    accountRepo.getCus(req.session.user.idNguoiSuDung).then(rows => {
+    accountRepo.getCus(req.session.user.idNguoiSuDung).then(rows=>{
         var vm = {
             items: req.session.cart,
             total: cartRepo.getTotal(req.session.cart),
             isEmpty: req.session.cart.length === 0,
-            diaChi: rows[0].diaChi,
-            SDT: rows[0].soDT,
+            diaChi:rows[0].diaChi,
+            SDT:rows[0].soDT,
         };
         res.render('cart/index', vm);
     });
@@ -28,33 +27,6 @@ router.post('/', (req, res) => {
         isEmpty: req.session.cart.length === 0,
     };
     res.render('cart/index', vm);
-
-});
-
-router.post('/tt', (req, res) => {
-
-    var date = new Date().toLocaleString().slice(0, 19).replace('T', ' ');
-    var cart = req.session.cart;
-    var idGioHang;
-    payRepo.addCart(cartRepo.getTotal(req.session.cart)).then(value=>{
-        idGioHang=value.insertId;
-        for (i = cart.length - 1; i >= 0; i--) { 
-            payRepo.addPToCart(cart[i].idSach, cart[i].sl, idGioHang);
-            if (i==0){
-                accountRepo.getCus(req.session.user.idNguoiSuDung).then(use=>{
-                    payRepo.addPayment(idGioHang,use[0].idKhachHang,use[0].diaChi,date,use[0].soDT).then(value=>{
-                        req.session.cart=[];
-                        res.redirect('/cart');             
-                    });
-                });
-                
-            }
-        }
-    });
-    
-
-    
-    // res.render('cart/index', vm);
 
 });
 
