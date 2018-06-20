@@ -19,3 +19,12 @@ exports.loadDetail = (idSach)=> {
     return db.load(sql);
 
 }
+
+exports.loadByKind = (idTheLoai) => {
+    var sql = `select * from Book where idLoai="${idTheLoai}" order by luotXem desc limit ${10} offset ${0}`;
+    return db.load(sql);
+}
+exports.loadByPD = (idNXB) => {
+    var sql = `select * from Book where idNhaSX="${idNXB}" order by luotXem desc limit ${10} offset ${0}`;
+    return db.load(sql);
+}

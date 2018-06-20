@@ -96,16 +96,26 @@ router.get('/profile', restrict, (req, res) => {
         res.render('account/profile',vm);
         
     });
+});
 
-    // accountRepo.getCus(idCus).then(rows=>{
-    //     var vm={
-    //         name:rows[0].hoTen,
-    //         diachi: rows[0].diaChi,
-    //         sdt: rows[0].soDT,
-    //     }
-    //     console.log(vm);
-    //     res.render('account/profile',vm);
-    // });
+router.get('/order',(req,res)=>{
+    var idDonHang=req.query.id;
+    payRepo.getDH(idDonHang).then(rows=>{
+
+        var p1=payRepo.getDatSP(rows[0].idGioHang);
+        var p2=accountRepo.getCus(req.session.user.idNguoiSuDung);
+
+        Promise.all([p1, p2]).then(([rows2, account]) => {
+            var vm={
+                name:account[0].hoTen,
+                donhang:rows[0],
+                sanpham:rows2
+            }
+            res.render('account/chi-tiet-dh',vm); 
+            
+        });
+               
+    });
 });
 
 router.get('/edit-info',(req,res)=>{

@@ -549,8 +549,8 @@ a{
     position: absolute;
     top: -1px;
     left: 224px;
-    width: 848px;
-    height: 335px;
+    width: 200px;
+    
     padding: 14px 20px;
     border-width: 1px;
     border-style: solid;
@@ -587,7 +587,7 @@ a{
     padding-top: 8px;
 }
 .nav-sub-li{
-    width: 25%;
+    width: 100%;
 }
 .nav-sub-li img{
     float: right;
