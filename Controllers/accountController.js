@@ -59,22 +59,24 @@ router.post('/login', (req, res) => {
             req.session.isLogged = true;
             req.session.user = rows[0];
             req.session.cart = [];
-             // res.redirect('/');
-            var url = '/';
-            if (req.query.retUrl) {
-                url = req.query.retUrl;
+            req.session.Authorized=rows[0].loaiNguoiDung;
+            if (rows[0].loaiNguoiDung===0){
+                var url = '/';
+                if (req.query.retUrl) {
+                    url = req.query.retUrl;
+                }
+                res.redirect(url);
+            }else{
+                res.redirect('../manager/dashboard');
             }
-            res.redirect(url);
+            
 
         } else {
 
             var vm = {
                 showError: true,
                 errorMsg: 'Tên hoặc mật khẩu không đúng.',
-               // layoutVM: res.locals.layoutVM,
             };
-
-
             res.render('account/dang-nhap', vm);
         }
     });
@@ -98,7 +100,7 @@ router.get('/profile', restrict, (req, res) => {
     });
 });
 
-router.get('/order',(req,res)=>{
+router.get('/order', restrict,(req,res)=>{
     var idDonHang=req.query.id;
     payRepo.getDH(idDonHang).then(rows=>{
 
@@ -118,7 +120,7 @@ router.get('/order',(req,res)=>{
     });
 });
 
-router.get('/edit-info',(req,res)=>{
+router.get('/edit-info', restrict,(req,res)=>{
     var idCus=req.session.user.idNguoiSuDung;
     accountRepo.getCus(idCus).then(rows=>{
         var vm={
@@ -148,11 +150,10 @@ router.post('/edit-info',(req,res)=>{
 router.post('/logout', (req, res) => {
     req.session.isLogged = false;
     req.session.user = null;
+    req.session.Authorized = -1;
     //req.session.cart = [];
     res.redirect(req.headers.referer);
 });
 
-router.get('/order',(req,res)=>{
-    res.render('account/chi-tiet-dh');
-});
+
 module.exports = router;

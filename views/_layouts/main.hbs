@@ -176,7 +176,7 @@
                                             <a href="ngoai-ngu.html">
                                                 <b>Thể loại</b>
                                             </a>
-                                        {{#each categories}}
+                                        {{#each layoutVM.categories}}
                                             <a href="#">{{tenLoai}}</a>
                                         {{/each}}
                                         </li>
@@ -197,7 +197,7 @@
                                             <a href="ngoai-ngu.html">
                                                 <b>Nhà Xuất Bản</b>
                                             </a>
-                                            {{#each nxb}}
+                                            {{#each layoutVM.nxb}}
                                                 <a href="#">{{tenNhaSX}}</a>
                                             {{/each}}
                                         </li>
@@ -477,12 +477,13 @@
         </div>
     </div>
     <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script> {{{_sections.js}}}
+    <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script> 
     <script type="text/javascript">
         $('#lnkLogout').on('click', function() {
             $('#frmLogout').submit();
         });
     </script>
+    {{{_sections.js}}}
 </body>
 
 </html>

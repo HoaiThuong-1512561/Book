@@ -17,6 +17,7 @@ var ProductController = require('./Controllers/ProductController');
 var accountController = require('./Controllers/accountController');
 var categoryController = require('./Controllers/categoryController');
 var cartController = require('./controllers/cartController');
+var managerController=require('./Controllers/managerController');
 
 var app = express();
 var session = require('express-session');
@@ -27,8 +28,13 @@ var sessionStore = new MySQLStore({
     host: '127.0.0.1',
     port: 3306,
     user: 'root',
+<<<<<<< HEAD
     password: 'tutrinhtt',
     database: 'doanwebck1',
+=======
+    password: '01657409117',
+    database: 'doanwebck',
+>>>>>>> 7c710f6224516b649981d646f1235998a06648a5
     createDatabaseTable: true,
     schema: {
         tableName: 'sessions',
@@ -78,6 +84,7 @@ app.use(handleLayoutMDW);
 app.use('/', HomeController);
 app.use('/sample_product', ProductController);
 app.use('/SP', SPController);
+app.use('/manager',managerController);
 app.use('/account', accountController);
 app.use('/cart', restrict, cartController);
 app.use('/tim-kiem', categoryController);

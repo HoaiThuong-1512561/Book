@@ -8,18 +8,16 @@ var router = express.Router();
 var p1 = HomeRePo.loadNewBook();
 var p2 = HomeRePo.loadBestSale();
 var p3 = HomeRePo.loadByViews();
-let menu=categoryRepo.loadAllKind();
-let nxb=categoryRepo.loadAllPD();
+
 router.get('/', (req, res) => {
 
-    Promise.all([p1, p2, p3,menu,nxb]).then(([newB, bestS, Views,menu,nxb]) => {
+    Promise.all([p1, p2, p3]).then(([newB, bestS, Views]) => {
 
         var vm = {
             newBook: newB,
             bestSaleBook: bestS,
             byViews: Views,
-            categories: menu,
-            nxb:nxb
+            
         };
         res.render('index', vm);
     });
