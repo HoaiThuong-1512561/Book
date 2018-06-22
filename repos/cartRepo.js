@@ -8,7 +8,6 @@ exports.add = (cart, item) => {
             return;
         }
     }
-    console.log(item);
     cart.push(item);
 };
 exports.remove=(cart, idSach) => {

@@ -27,8 +27,8 @@ var sessionStore = new MySQLStore({
     host: '127.0.0.1',
     port: 3306,
     user: 'root',
-    password: 'root',
-    database: 'doanwebck',
+    password: 'tutrinhtt',
+    database: 'doanwebck1',
     createDatabaseTable: true,
     schema: {
         tableName: 'sessions',
@@ -80,6 +80,7 @@ app.use('/sample_product', ProductController);
 app.use('/SP', SPController);
 app.use('/account', accountController);
 app.use('/cart', restrict, cartController);
-app.use(handle404MDW);
 app.use('/tim-kiem', categoryController);
+app.use(handle404MDW);
+
 app.listen(3000);
