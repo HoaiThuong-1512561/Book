@@ -1,5 +1,5 @@
 <div class="container sp">
-    <a class="btn btn-info" href="/sp/add" role="button"style="margin-left: 900px">
+    <a class="btn btn-info" href="/sp/add" role="button" style="margin-left: 900px">
         Thêm sản phẩm mới
     </a>
     <div class="box-body">
@@ -7,49 +7,45 @@
             <div class="col-md-12">
                 <table id="example1" class="table table-striped">
                     <thead>
-                    <tr>
-                        <th>Mã sách</th>
-                        <th>Tên sách</th>
-                        <th>Tác giả</th>
-                        <th>Nhà xuất bản</th>
-                        <th>Tên loại</th>
-                        <th>Giá bán</th>
-                        <th>Số lượng</th>
-                        <th>Sữa</th>
-                        <th>Xóa</th>
+                        <tr>
+                            <th>Mã sách</th>
+                            <th>Tên sách</th>
+                            <th>Tác giả</th>
+                            <th>Nhà xuất bản</th>
+                            <th>Tên loại</th>
+                            <th>Giá bán</th>
+                            <th>Số lượng</th>
+                            <th>Sữa</th>
+                            <th>Xóa</th>
 
-                    </tr>
+                        </tr>
                     </thead>
                     <tbody>
                         {{#each Book}}
 
-                    <tr>
-                    <td>{{idSach}} </td>
-                    <td>{{ten_sach}} </td>
-                    <td>{{tac_gia}}</td>
-                    <td>{{tenNhaSX}}</td>
-                    <td>{{tenLoai}}</td>
-                    <td>{{giaBan}} </td>
-                    <td>{{soLuongSP}}
-
-                        <!-- Modal -->
-                         </td>
-                        <td>   <a class="btn" href="/SP/edit?id={{idSach}}" role="button"style="background-color: gold">
-                            Sửa
-                        </a></td>
-                        <td>
-                            <a class="btn" href="/SP/delete?id={{idSach}}" role="button"style="background-color: salmon" >
-                            Xóa
-                        </a></td>
-
-
-
-
-                    </tr>
+                        <tr>
+                            <td>{{idSach}} </td>
+                            <td>{{ten_sach}} </td>
+                            <td>{{tac_gia}}</td>
+                            <td>{{tenNhaSX}}</td>
+                            <td>{{tenLoai}}</td>
+                            <td>{{giaBan}} </td>
+                            <td>{{soLuongSP}}</td> 
+                            <td>
+                                <a class="btn" href="/SP/edit?id={{idSach}}" role="button" style="background-color: gold">
+                                    Sửa
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn" href="/SP/delete?id={{idSach}}" role="button" style="background-color: salmon">
+                                    Xóa
+                                </a>
+                            </td>
+                        </tr>
 
                         {{/each}}
                     </tbody>
-                    <tfoot></tfoot>
+                   
                 </table>
             </div>
         </div>
@@ -71,7 +67,7 @@
             <div class="">
                 <button style="margin-left:400px;margin-top: 20px" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 
-                <form action="" method="POST" role="form"style="margin-left:500px;margin-top: -34px;margin-bottom: 18px">
+                <form action="" method="POST" role="form" style="margin-left:500px;margin-top: -34px;margin-bottom: 18px">
                     <input type="hidden" id="" name="idSach" value="{{idSach}}">
                     <button type="submit" class="btn btn-danger">
                         Okay
@@ -79,16 +75,20 @@
                 </form>
                 <!--<button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>-->
 
-        </div>
+            </div>
         </div>
     </div>
 </div>
 <!-- jQuery 3 -->
-<script src="phantrang/jquery.min.js"></script>
-    <script src="phantrang/bootstrap.min.js"></script>
-    <script src="phantrang/jquery.dataTables.min.js"></script>
-    <script src="phantrang/dataTables.bootstrap.min.js"></script>
-    <script src="dist/js/adminlte.min.js"></script>
+
+
+
+{{#section 'js'}}
+<script src="/phantrang/jquery.min.js"></script>
+<script src="/phantrang/bootstrap.min.js"></script>
+<script src="/phantrang/jquery.dataTables.min.js"></script>
+<script src="/phantrang/dataTables.bootstrap.min.js"></script>
+<script src="/dist/js/adminlte.min.js"></script>
 
 <script>
     $(function () {
@@ -119,6 +119,4 @@
     });
     //Initialize Select2 Elements
     $('.select2').select2();
-</script>
-
-
+</script> {{/section}}

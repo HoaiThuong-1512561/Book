@@ -549,7 +549,7 @@ a{
     position: absolute;
     top: -1px;
     left: 224px;
-    width: 200px;
+    width: 300px;
     
     padding: 14px 20px;
     border-width: 1px;
@@ -615,7 +615,6 @@ a{
     top: 11px;
     right: 37px;
     width: 250px;
-    height: 422px;
     border-radius: 3px;
     background-color: white;
     z-index: 3;
