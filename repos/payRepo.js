@@ -31,3 +31,13 @@ exports.addPayment = (idCart,idKH,diaChi,ngay,sdt)=>{
     var sql = `insert into ThanhToan(idGioHang, idKhachHang, diaChiThanhToan,ngayDatHang,sdtNhanHang,trangThai) values('${idCart}', '${idKH}', '${diaChi}','${ngay}','${sdt}','chờ giao hàng')`;
     return db.save(sql); 
 };
+exports.updateTrangThaiDH=(idDH,TT)=>{
+    var sql=`UPDATE ThanhToan SET trangThai='${TT}' WHERE idThanhToan = '${idDH}'`;
+    return db.save(sql);
+};
+exports.getAllPayment = ()=>{
+    
+    var sql=`SELECT * 
+            FROM ThanhToan INNER JOIN KhachHang ON ThanhToan.idKhachHang=KhachHang.idKhachHang `;
+    return db.load(sql);
+};

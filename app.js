@@ -30,8 +30,8 @@ var sessionStore = new MySQLStore({
     host: '127.0.0.1',
     port: 3306,
     user: 'root',
-    password: 'tutrinhtt',
-    database: 'doanwebck1',
+    password: '01657409117',
+    database: 'doanwebck',
     createDatabaseTable: true,
     schema: {
         tableName: 'sessions',
