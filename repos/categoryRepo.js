@@ -13,6 +13,8 @@ exports.loadAllLoai = () => {
     return db.load(sql);
 
 };
+
+// load book cung loai & nsx (detail book)
 exports.loadAllBook = () => {
     var sql = `select * from book`;
     return db.load(sql);
@@ -27,13 +29,36 @@ exports.loadAllPD = () => {
     return db.load(sql);
 };
 
-
+//show data vs loai & nsx
 exports.load_by_idLoai = (id) => {
     var sql = `Select* from Book where idLoai = ${id}`;
     return db.load(sql);
 }
-
 exports.load_by_idNhaSX = (id) => {
     var sql = `Select* from Book where idNhaSX = ${id}`;
+    return db.load(sql);
+}
+
+//tim kiem vs key word
+exports.search_with_keyword = (keyword,idMuc) => {
+if(idMuc==2)
+{
+    var sql = `Select * from book where ten_sach like '%${keyword}%'`;
+
+}
+else if(idMuc==3)
+{
+    var sql = `Select * from book where tac_gia like '%${keyword}%'`;
+
+}
+else if(idMuc==4){
+    var sql = `Select * from book,NhaSX where book.idNhaSX=NhaSX.idNhaSX and tenNhaSX like '%${keyword}%'`;
+
+}
+else {
+    var sql = `Select distinct ten_sach, giaBan,hinhAnh,tac_gia from book,NhaSX where book.idNhaSX=NhaSX.idNhaSX and tenNhaSX like '%${keyword}%' or
+    ten_sach like '%${keyword}%' or tac_gia like '%${keyword}%'`;
+
+}
     return db.load(sql);
 }

@@ -3,7 +3,6 @@
  */
 var express = require('express');
 var categoryRepo = require('../repos/categoryRepo');
-// var ProductRePo = require('../repos/ProductRePo');
 
 var router = express.Router();
 
