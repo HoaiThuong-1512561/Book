@@ -4,17 +4,22 @@
             <div class="grid8">
                 <ul class="breadcrumb no-style" xmlns:v="http://rdf.data-vocabulary.org/#">
                     <li typeof="v:Breadcrumb">
-                        <a rel="v:url" property="v:title" href="index.html">Trang chủ</a>
-                        <span class="divider">/</span>
+                        <a rel="v:url" property="v:title" href="/">Trang chủ</a>
+                        
                     </li>
                     <li typeof="v:Breadcrumb">
-                        <a rel="v:url" property="v:title" href="ngoai-ngu.html">Thể loại</a>
-                        <span class="divider">/</span>
+                        <a rel="v:url" property="v:title" href="/tim-kiem/theo-loai/?id={{tl.idLoai}}">{{tl.tenLoai}}</a>
+                       
+                    </li>
+                     {{#each products}}
+                      <li typeof="v:Breadcrumb">
+                        <a rel="v:url" property="v:title" href="#">{{ten_sach}}</a>
+                        
                     </li>
                 </ul>
             </div>
         </div>
-        {{#each products}}
+       
         <div class="row" itemscope="" itemtype="http://schema.org/Product">
             <div class="col-md-5">
                 <div class="image-box js-image-box no-left">
@@ -63,11 +68,11 @@
                             </div>
                             <p class="old-price-item" data-value="35000" id="p-listpirce">
                                 <span>Giá bìa:</span>
-                                <span>{{giaBan}}&nbsp;₫</span>
+                                <span>{{number_format giaBan}}&nbsp;₫</span>
                             </p>
                             <p class="special-price-item" data-value="26000" id="p-specialprice">
                                 <span>Tại Tiki:</span>
-                                <span id="span-price">{{giaBan}}&nbsp;₫</span>
+                                <span id="span-price">{{number_format giaBan}}&nbsp;₫</span>
                                 <span>(Đã có VAT)</span>
                             </p>
                             <p class="saleoff-price-item">
@@ -203,7 +208,7 @@
                                 </h3>
                                 <em class="item-author">{{tac_gia}}</em>
                                 <p class="item-price">
-                                    <strong>{{giaBan}}
+                                    <strong>{{number_format giaBan}}
                                         <u>đ</u>
                                     </strong>
 
@@ -249,7 +254,7 @@
                                 </h3>
                                 <em class="item-author">{{tac_gia}}</em>
                                 <p class="item-price">
-                                    <strong>{{giaBan}}
+                                    <strong>{{number_format giaBan}}
                                         <u>đ</u>
                                     </strong>
 

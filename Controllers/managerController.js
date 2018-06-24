@@ -3,6 +3,8 @@ var restrict = require('../middle-wares/restrictManager');
 var categoryRepo = require('../repos/categoryRepo');
 var payRepo = require('../repos/payRepo');
 var router = express.Router();
+var manager = require('../repos/managerRepo');
+var SHA256 = require('crypto-js/sha256');
 
 router.get('/dashboard', restrict, (req, res) => {
     res.render('manager/dashboard');
@@ -88,6 +90,30 @@ router.post('/nxb/add',(req,res)=>{
         Msg: 'Thêm thành công!',
     };
     res.render('manager/add/addNXB',vm);
+});
+
+router.get('/Acount',restrict,(req,res)=>{
+    manager.loadAcount().then(rows=>{
+        var vm={
+            user:rows
+        }
+        res.render('manager/qly-acount',vm);
+    });
+});
+router.post('/Acount',restrict,(req,res)=>{
+    var str="12345678";
+    console.log(SHA256(str).toString());
+    console.log(req.body.name);
+    manager.UpdatepassAcount(req.body.name,SHA256(str).toString()).then(rows=>{
+        manager.loadAcount().then(rows=>{
+            var vm={
+                user:rows,
+                showMsg:true,
+                Msg:'Reset password thành công!'
+            }
+            res.render('manager/qly-acount',vm);
+        });
+    });
 });
 
 module.exports = router;

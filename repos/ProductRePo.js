@@ -28,3 +28,9 @@ exports.loadByPD = (idNXB) => {
     var sql = `select * from Book where idNhaSX="${idNXB}" order by luotXem desc limit ${10} offset ${0}`;
     return db.load(sql);
 }
+
+exports.loadTheLoai = (idTheLoai) => {
+    var sql= `select * from loai where idLoai=${idTheLoai}`;
+    return db.load(sql);
+}
+

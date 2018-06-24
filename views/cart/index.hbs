@@ -29,7 +29,7 @@
 
             </div>
             <div class="col-md-3">
-                {{giaBan}}
+                {{number_format giaBan}} đ
             </div>
             <div class="col-md-3">
                 <form action="" method="POST">
@@ -59,14 +59,14 @@
                         <br />Số Điện Thoại: {{SDT}}</p>
                     <h4 class="text-left">Thông tin đơn hàng</h4>
                     <span>Tạm tính ({{items.length}} sản phẩm)</span>
-                    <span class="right">{{total}} đ </span>
+                    <span class="right">{{number_format total}} đ </span>
                     <div>
                         <span>Phí giao hàng</span>
                         <span class="right">free</span>
                     </div>
                     <hr />
                     <span>Tổng cộng:</span>
-                    <span style="color:red!important;" class="right">{{total}}đ</span>
+                    <span style="color:red!important;" class="right">{{number_format total}}đ</span>
                     <hr />
                     <span>Đã bao gồm VAT(nếu có)</span>
                     <button style="width:100%" type="submit" class="next-btn next-btn-primary next-btn-large">TIẾN HÀNH THANH TOÁN</button>

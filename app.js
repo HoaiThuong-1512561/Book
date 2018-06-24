@@ -30,7 +30,7 @@ var sessionStore = new MySQLStore({
     host: '127.0.0.1',
     port: 3306,
     user: 'root',
-    password: '01657409117',
+    password: 'root',
     database: 'doanwebck',
     createDatabaseTable: true,
     schema: {
@@ -62,7 +62,7 @@ app.engine('hbs', exphbs({
         section: express_handlebars_sections(),
         number_format: n => {
             var nf = wnumb({
-                thousand: ','
+                thousand: '.'
             });
             return nf.to(n);
         }

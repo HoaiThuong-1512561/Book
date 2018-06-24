@@ -17,7 +17,7 @@
             <span>Đơn hàng: {{donhang.idThanhToan}}</span>
             <div>
                 <span>Đặt ngày: {{donhang.ngayDatHang}}</span>
-                <span class="right">Tổng cộng: {{donhang.tongGia}}đ</span>
+                <span class="right">Tổng cộng: {{number_format donhang.tongGia}}đ</span>
                 <hr />
             </div>
             <span>Đã được giao vào 07 thg 4 2018 </span>
@@ -31,7 +31,7 @@
                         <h2>{{ten_sach}} (x{{soLuong}})</h2>
                     </div>
                     <div class="col-md-3">
-                        <h2>{{giaBan}}đ </h2>
+                        <h2>{{number_format giaBan}}đ </h2>
                     </div>
                     <div class="col-md-3">
                         <a href="#" class="right">Viết đánh giá</a>
@@ -51,7 +51,7 @@
                 <div class="col-md-6">
                     <div>
                         <span>Tạm tính</span>
-                        <span class="right">{{donhang.tongGia}}đ </span>
+                        <span class="right">{{number_format donhang.tongGia}}đ </span>
                         <div>
                             <span>Phí vận chuyển</span>
                             <span class="right">0đ </span>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <span>Tổng cộng(bao gồm VAT)</span>
-                    <span class="right">{{donhang.tongGia}}đ </span>
+                    <span class="right">{{number_format donhang.tongGia}}đ </span>
                     <div>
                         <span>Thanh toán khi nhận hàng</span>
                     </div>

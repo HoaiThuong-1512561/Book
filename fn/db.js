@@ -10,7 +10,7 @@ exports.load = sql => {
                 host: '127.0.0.1',
                 port: 3306,
                 user: 'root',
-                password: '01657409117',
+                password: 'root',
                 database: 'doanwebck',
             });
 
@@ -34,7 +34,7 @@ exports.save = sql => {
                 host: '127.0.0.1',
                 port: 3306,
                 user: 'root',
-                password: '01657409117',
+                password: 'root',
                 database: 'doanwebck',
             });
 
