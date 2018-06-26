@@ -28,7 +28,7 @@ exports.addPToCart=(maSP,SL,idCart)=>{
     return db.save(sql);    
 };
 exports.addPayment = (idCart,idKH,diaChi,ngay,sdt)=>{
-    var sql = `insert into ThanhToan(idGioHang, idKhachHang, diaChiThanhToan,ngayDatHang,sdtNhanHang,trangThai) values('${idCart}', '${idKH}', '${diaChi}','${ngay}','${sdt}','chờ giao hàng')`;
+    var sql = `insert into ThanhToan(idGioHang, idKhachHang, diaChiThanhToan,ngayDatHang,sdtNhanHang,trangThai) values('${idCart}', '${idKH}', '${diaChi}','${ngay}','${sdt}','0')`;
     return db.save(sql); 
 };
 exports.updateTrangThaiDH=(idDH,TT)=>{

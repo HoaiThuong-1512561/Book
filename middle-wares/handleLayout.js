@@ -21,7 +21,8 @@ module.exports = (req, res, next) => {
             curUser: req.session.user,
             totalCart: req.session.cart.length,
             categories: menu,
-            nxb:nxb
+            nxb:nxb,
+            Authorized:req.session.Authorized
         };
         
         next();

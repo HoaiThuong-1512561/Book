@@ -5,6 +5,12 @@ var payRepo = require('../repos/payRepo');
 var router = express.Router();
 var manager = require('../repos/managerRepo');
 var SHA256 = require('crypto-js/sha256');
+var formidable = require('formidable');
+var fs = require('fs');
+
+var SPRePo = require('../repos/SPRePo');
+
+var multer = require('multer')
 
 router.get('/dashboard', restrict, (req, res) => {
     res.render('manager/dashboard');
@@ -36,7 +42,7 @@ router.get('/don-hang', restrict, (req, res) => {
 });
 
 router.post('/theloai', (req, res) => {
-    categoryRepo.updateLoai(req.body.idLoai, req.body.tenLoai).then(rows=>{
+    categoryRepo.updateLoai(req.body.idLoai, req.body.tenLoai).then(rows => {
         categoryRepo.loadAllKind().then(rows => {
             var vm = {
                 showMsg: true,
@@ -48,16 +54,16 @@ router.post('/theloai', (req, res) => {
     });
 
 });
-router.get('/theloai/add',restrict,(req,res)=>{
+router.get('/theloai/add', restrict, (req, res) => {
     res.render('manager/add/addLoai');
 });
-router.post('/theloai/add',(req,res)=>{
+router.post('/theloai/add', (req, res) => {
     categoryRepo.addLoai(req.body.tenLoai);
     var vm = {
         showMsg: true,
         Msg: 'Thêm thành công!',
     };
-    res.render('manager/add/addLoai',vm);
+    res.render('manager/add/addLoai', vm);
 });
 router.post('/don-hang', (req, res) => {
     console.log(req.body.idThanhToan);
@@ -67,8 +73,7 @@ router.post('/don-hang', (req, res) => {
 });
 
 router.post('/nxb', (req, res) => {
-    
-    categoryRepo.updateNXB(req.body.idNhaSX, req.body.tenNhaSX).then(rows=>{
+    categoryRepo.updateNXB(req.body.idNhaSX, req.body.tenNhaSX).then(rows => {
         categoryRepo.loadAllPD().then(rows => {
             var vm = {
                 showMsg: true,
@@ -80,40 +85,214 @@ router.post('/nxb', (req, res) => {
     });
 
 });
-router.get('/nxb/add',restrict,(req,res)=>{
+router.get('/nxb/add', restrict, (req, res) => {
     res.render('manager/add/addNXB');
 });
-router.post('/nxb/add',(req,res)=>{
+router.post('/nxb/add', (req, res) => {
     categoryRepo.addNXB(req.body.tenNXB);
     var vm = {
         showMsg: true,
         Msg: 'Thêm thành công!',
     };
-    res.render('manager/add/addNXB',vm);
+    res.render('manager/add/addNXB', vm);
 });
 
-router.get('/Acount',restrict,(req,res)=>{
-    manager.loadAcount().then(rows=>{
-        var vm={
-            user:rows
+router.get('/Acount', restrict, (req, res) => {
+    manager.loadAcount().then(rows => {
+        var vm = {
+            user: rows
         }
-        res.render('manager/qly-acount',vm);
+        res.render('manager/qly-acount', vm);
     });
 });
-router.post('/Acount',restrict,(req,res)=>{
-    var str="12345678";
+router.post('/Acount', restrict, (req, res) => {
+    var str = "12345678";
     console.log(SHA256(str).toString());
     console.log(req.body.name);
-    manager.UpdatepassAcount(req.body.name,SHA256(str).toString()).then(rows=>{
-        manager.loadAcount().then(rows=>{
-            var vm={
-                user:rows,
-                showMsg:true,
-                Msg:'Reset password thành công!'
+    manager.UpdatepassAcount(req.body.name, SHA256(str).toString()).then(rows => {
+        manager.loadAcount().then(rows => {
+            var vm = {
+                user: rows,
+                showMsg: true,
+                Msg: 'Reset password thành công!'
             }
-            res.render('manager/qly-acount',vm);
+            res.render('manager/qly-acount', vm);
         });
     });
 });
+router.get('/sanpham', (req, res) => {
+    SPRePo.loadAll().then(rows => {
+        var vm = {
+            Book: rows,
+            NhaSX: rows,
+            Loai: rows
+        };
+        res.render('manager/qly-sanpham', vm);
+    });
+});
+router.get('/sanpham/add', (req, res) => {
+    var p1 = categoryRepo.loadAllLoai();
+    var p2 = categoryRepo.loadAllPD();
+    Promise.all([p1, p2]).then(([loai, nxb]) => {
+        var vm = {
+            loai: loai,
+            nxb: nxb,
+            showAlert: false
+
+        };
+        res.render('manager/add/addSanPham', vm);
+    });
+});
+router.get('/sanpham/delete', (req, res) => {
+    var vm = {
+        idSach: req.query.id
+    };
+    res.render('manager/delete/deleteSanPham', vm);
+});
+router.post('/sanpham/delete', (req, res) => {
+
+    SPRePo.delete(req.body.idSach).then(value => {
+        res.redirect('/manager/sanpham');
+    });
+});
+
+router.get('/sanpham/edit', (req, res) => {
+
+
+    var p1 = categoryRepo.loadAllLoai();
+    var p2 = categoryRepo.loadAllPD();
+    var p3 = SPRePo.single(req.query.id);
+    Promise.all([p1, p2, p3]).then(([loai, nxb, c]) => {
+
+        var vm = {
+            Book: c[0],
+            loai: loai,
+            nxb: nxb,
+            showAlert: false
+
+        };
+
+        res.render('manager/edit/editSanPham', vm);
+    });
+
+
+});
+
+router.post('/sanpham/edit', (req, res, next) => {
+    // SPRePo.update(req.body).then(value => {
+    //     res.redirect('/sanpham');
+    // });
+    upload(req, res, (err) => {
+        if (err) {
+            var vm = {
+
+                ErrMsg: true,
+                Msg: 'Không thể upload file'
+            }
+            res.render('manager/edit/editSanPham', vm);
+            return;
+        }
+    })
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        if (err) next(err);
+
+        var Book = {
+            idSach: req.query.id,
+            tenSach: req.body.ten_sach,
+            moTa: req.body.moTa,
+            giaBan: req.body.giaBan,
+            tenSach: req.body.ten_sach,
+            tacGia: req.body.tac_gia,
+            idNXB: req.body.idNhaSX,
+            idLoai: req.body.idLoai,
+            soLuong: req.body.sl,
+        }
+        if (files.fileS.name.length != 0) {
+            SPRePo.updateHinhAnh(req.query.id, files.fields.name);
+        }
+        SPRePo.update(Book).then(row => {
+            var p1 = categoryRepo.loadAllLoai();
+            var p2 = categoryRepo.loadAllPD();
+            var p3 = SPRePo.single(req.query.id);
+            Promise.all([p1, p2, p3]).then(([loai, nxb, c]) => {
+
+                var vm = {
+                    Book: c[0],
+                    loai: loai,
+                    nxb: nxb,
+                    showAlert: false,
+                    showMsg: true,
+                    Msg: 'Cập nhật thành công'
+                };
+
+                res.render('manager/edit/editSanPham', vm);
+            });
+        });
+        
+
+
+
+    });
+});
+
+var storage = multer.diskStorage({
+    destination: 'public/img/book',
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+})
+const upload = multer({ storage: storage }).single('fileS')
+router.post('/sanpham/add', function (req, res, next) {
+    upload(req, res, (err) => {
+        if (err) {
+            var vm = {
+
+                ErrMsg: true,
+                Msg: 'Không thể upload file'
+            }
+            res.render('manager/add/addSanPham', vm);
+            return;
+        }
+    })
+
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        if (err) next(err);
+        var Book = {
+            tenSach: req.body.ten_sach,
+            hinhAnh: files.fileS.name,
+            moTa: req.body.moTa,
+            giaBan: req.body.giaBan,
+            tenSach: req.body.ten_sach,
+            tacGia: req.body.tac_gia,
+            idNXB: req.body.idNhaSX,
+            idLoai: req.body.idLoai,
+            soLuong: req.body.sl,
+            ngayNhap: new Date().toLocaleString().slice(0, 19).replace('T', ' ')
+        }
+        categoryRepo.addNewBook(Book).then(rows => {
+            if (rows.length === 0) {
+                var vm = {
+
+                    ErrMsg: true,
+                    Msg: 'Lỗi khi thêm'
+                }
+                res.render('manager/add/addSanPham', vm);
+            } else {
+                var vm = {
+
+                    showMsg: true,
+                    Msg: 'Thêm thành công'
+                }
+                res.render('manager/add/addSanPham', vm);
+            }
+        });
+
+    });
+
+
+});
+
 
 module.exports = router;

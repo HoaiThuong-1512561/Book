@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var express_handlebars_sections = require('express-handlebars-sections');
 var wnumb = require('wnumb');
-
+var formidable = require('express-formidable');
 var path = require('path');
 
 
@@ -30,7 +30,7 @@ var sessionStore = new MySQLStore({
     host: '127.0.0.1',
     port: 3306,
     user: 'root',
-    password: 'root',
+    password: '01657409117',
     database: 'doanwebck',
     createDatabaseTable: true,
     schema: {
@@ -72,10 +72,12 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, "views"));
 app.use(express.static(path.resolve(__dirname, 'public')));
 
+// app.use(formidable());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
 app.use(handleLayoutMDW);
 
 app.use('/', HomeController);

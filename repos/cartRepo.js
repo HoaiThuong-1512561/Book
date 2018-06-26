@@ -18,10 +18,18 @@ exports.remove=(cart, idSach) => {
         }
     }
 };
+exports.updateSL=(cart,idSach,sl)=>{
+    for (i = cart.length - 1; i >= 0; i--) {
+        if (cart[i].idSach===idSach){
+            cart[i].sl=sl;
+            return;
+        }
+    }
+};
 exports.getTotal = function (cart) {
     var total = 0;
     for (var i = 0; i < cart.length; i++) {
-        total += cart[i].amount;
+        total += (cart[i].giaBan*cart[i].sl);
     }
     return total;
 }
