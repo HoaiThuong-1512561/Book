@@ -162,7 +162,7 @@
             <div class="block-inner-content clearfix">
                 <ul id="myList" class="block-slider-items list-item-default" style="width: 104%">
 <!--chi phan trang vs 1 san pham/1dong-->
-                        <div class="block-filters float-right" style="margin-top: 12px;margin-right: 20px">
+                        <div class="block-filters float-right" style="margin-top: 12px;margin-right: 50px">
                             <span class="block-orderby-label ml5">Sắp xếp theo</span>
 
                             <select class="block-orderby-select" onchange="aj_set_location(this.value)">
@@ -175,53 +175,50 @@
                                 <!--<option  value="http://cachep.vn/danh-muc/sach-quoc-van/van-hoc/?order=publish_date&dir=desc">Ngày xuất bản</option>-->
                             </select>
                         </div>
-                <table id="example1" class="table table-striped" style="margin-top: -40px">
-
+                <table id="example1" class="table table-striped" style="margin-top: -30px;width: 20%;margin-left: 15px">
                     <thead>
-                    <tr>
-                        <th></th>
-                    </tr>
+                {{#withGroup book 4}}
+                 <tr>
+                {{#each this}}
+                        <th style="border-top: 0px none #fff;padding: 0px;border-bottom: 0px none #fff; border-width: 0px"></th>
+                 {{/each}}
+                            </tr>
+                {{/withGroup}}
                     </thead>
-
-                    <tbody>
-
-                    {{#each book}}
-
-                        <tr>
-
-                                <td>
-
-                                        <div class="item" >
-                                    <li class="item-outer" style="width: 24%">
-                                        <a class="item-thumb" href="sample_product/?id={{idSach}}" rel="nofollow">
-                                            <img width="200" height="280" src="/{{hinhAnh}}" class="attachment-thumbnail-rectangle wp-post-image" alt="nhumuadongroixuong">
-                                            <span class="item-percent-bubble">-10%</span>
-                                        </a>
-                                        <div class="item-meta-outer">
-                                            <h3 class="item-title">
-                                                <a href="sample_product/?id={{idSach}}">{{ten_sach}}</a>
-                                            </h3>
-                                            <em class="item-author">{{tac_gia}}</em>
-                                            <p class="item-price">
-                                                <strong>{{giaBan}}
-                                                    <u>đ</u>
-                                                </strong>
-                                                <small>{{giaBan}}
-                                                    <u>đ</u>
-                                                </small>
-                                            </p>
-                                        </div>
-                                    </li>
-                                </div>
+                        <tbody>
+                        {{#withGroup book 4}}
+                            <tr>
+                                {{#each this}}
+                                    <td>
+                                    <div class="item" >
+                                        <li class="item-outer" >
+                                            <a class="item-thumb" href="sample_product/?id={{idSach}}" rel="nofollow">
+                                                <img width="200" height="280" src="/{{hinhAnh}}" class="attachment-thumbnail-rectangle wp-post-image" alt="nhumuadongroixuong">
+                                                <span class="item-percent-bubble">-10%</span>
+                                            </a>
+                                            <div class="item-meta-outer">
+                                                <h3 class="item-title">
+                                                    <a href="sample_product/?id={{idSach}}">{{ten_sach}}</a>
+                                                </h3>
+                                                <em class="item-author">{{tac_gia}}</em>
+                                                <p class="item-price">
+                                                    <strong>{{giaBan}}
+                                                        <u>đ</u>
+                                                    </strong>
+                                                    <small>{{giaBan}}
+                                                        <u>đ</u>
+                                                    </small>
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </div>
                                 </td>
+                                {{/each}}
+                            </tr>
+                        {{/withGroup}}
 
-                        </tr>
-                        {{/each}}
-
-                    </tbody>
-
-
-                    </table>
+                        </tbody>
+                </table>
 
                 </ul>
 

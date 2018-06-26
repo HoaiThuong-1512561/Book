@@ -3,6 +3,8 @@ var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var express_handlebars_sections = require('express-handlebars-sections');
 var wnumb = require('wnumb');
+var helpers = require('handlebars-helpers');
+var array = helpers.array();
 
 var path = require('path');
 
@@ -29,9 +31,6 @@ var MySQLStore = require('express-mysql-session')(session);
 var sessionStore = new MySQLStore({
     host: '127.0.0.1',
     port: 3306,
-    user: 'root',
-    password: 'tutrinhtt',
-    database: 'doanwebck1',
     createDatabaseTable: true,
     schema: {
         tableName: 'sessions',

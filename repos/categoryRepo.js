@@ -20,6 +20,11 @@ exports.loadAllBook = () => {
     return db.load(sql);
 
 };
+exports.loadAllBook_arr = () => {
+    var sql = `select * from book`;
+    return db.load(sql);
+
+};
 exports.loadAllKind = () => {
     var sql = 'select * from Loai';
     return db.load(sql);

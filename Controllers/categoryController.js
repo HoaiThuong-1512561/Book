@@ -3,7 +3,7 @@
  */
 var express = require('express');
 var categoryRepo = require('../repos/categoryRepo');
-
+var helpers = require('handlebars-helpers')();
 var router = express.Router();
 
 var p1 = categoryRepo.loadAllLoai();
@@ -24,6 +24,7 @@ router.get('/', (req, res) => {
 
 router.get('/theo-loai/', (req, res) => {
     var p3 =categoryRepo.load_by_idLoai(req.query.id);
+    // p3 = helpers.array();
     Promise.all([p1, p3,p4]).then(([rowloais, rowBooks,rowNhaSXs]) => {
         var vm = {
             loai: rowloais,
