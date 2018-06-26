@@ -9,6 +9,9 @@ exports.load = sql => {
             var cn = mysql.createConnection({
                 host: '127.0.0.1',
                 port: 3306,
+                user: 'root',
+                password: '01657409117',
+                database: 'doanwebck',
             });
 
     cn.connect();
@@ -30,6 +33,9 @@ exports.save = sql => {
             var cn = mysql.createConnection({
                 host: '127.0.0.1',
                 port: 3306,
+                user: 'root',
+                password: '01657409117',
+                database: 'doanwebck',
             });
 
     cn.connect();

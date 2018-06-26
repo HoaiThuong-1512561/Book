@@ -5,7 +5,7 @@ var express_handlebars_sections = require('express-handlebars-sections');
 var wnumb = require('wnumb');
 var helpers = require('handlebars-helpers');
 var array = helpers.array();
-
+var formidable = require('express-formidable');
 var path = require('path');
 
 
@@ -31,6 +31,9 @@ var MySQLStore = require('express-mysql-session')(session);
 var sessionStore = new MySQLStore({
     host: '127.0.0.1',
     port: 3306,
+    user: 'root',
+    password: '01657409117',
+    database: 'doanwebck',
     createDatabaseTable: true,
     schema: {
         tableName: 'sessions',
@@ -61,7 +64,7 @@ app.engine('hbs', exphbs({
         section: express_handlebars_sections(),
         number_format: n => {
             var nf = wnumb({
-                thousand: ','
+                thousand: '.'
             });
             return nf.to(n);
         }
@@ -71,10 +74,12 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, "views"));
 app.use(express.static(path.resolve(__dirname, 'public')));
 
+// app.use(formidable());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
 app.use(handleLayoutMDW);
 
 app.use('/', HomeController);

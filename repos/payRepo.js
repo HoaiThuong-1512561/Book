@@ -24,10 +24,30 @@ exports.addCart=(total)=>{
     return db.save(sql);    
 };
 exports.addPToCart=(maSP,SL,idCart)=>{
-    var sql = `insert into DatSP(idMaSP, soLuong, idGioHang) values('${maSP}', '${SL}', '${idCart}')`;
+    var sql = `insert into DatSP(idMaSP, sl, idGioHang) values('${maSP}', '${SL}', '${idCart}')`;
     return db.save(sql);    
 };
 exports.addPayment = (idCart,idKH,diaChi,ngay,sdt)=>{
-    var sql = `insert into ThanhToan(idGioHang, idKhachHang, diaChiThanhToan,ngayDatHang,sdtNhanHang,trangThai) values('${idCart}', '${idKH}', '${diaChi}','${ngay}','${sdt}','chờ giao hàng')`;
+    var sql = `insert into ThanhToan(idGioHang, idKhachHang, diaChiThanhToan,ngayDatHang,sdtNhanHang,trangThai) values('${idCart}', '${idKH}', '${diaChi}','${ngay}','${sdt}','0')`;
     return db.save(sql); 
 };
+exports.updateTrangThaiDH=(idDH,TT)=>{
+    var sql=`UPDATE ThanhToan SET trangThai='${TT}' WHERE idThanhToan = '${idDH}'`;
+    return db.save(sql);
+};
+exports.getAllPayment = ()=>{
+    
+    var sql=`SELECT * 
+            FROM ThanhToan INNER JOIN KhachHang ON ThanhToan.idKhachHang=KhachHang.idKhachHang `;
+    return db.load(sql);
+};
+exports.getBook=(idBook)=>{
+    var sql=`select* from book where idSach='${idBook}'`;
+    return db.load(sql);
+};
+exports.updateSLBook=(idBook,luotmua,sl)=>{
+    var sql=`update Book set luotMua = '${luotmua}',
+    soLuong = '${sl}'
+     where idSach = ${idBook}`
+     return db.save(sql);
+}

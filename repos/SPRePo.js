@@ -8,18 +8,12 @@ exports.loadAll = () => {
     return db.load(sql);
 }
 exports.single = (id) => {
-    return new Promise((resolve, reject) => {
-        var sql = `select * from Book,NhaSX,Loai where idSach = ${id} and Book.idNhaSX=NhaSX.idNhaSX and Book.idLoai=Loai.idLoai`;
-        db.load(sql).then(rows => {
-            if (rows.length === 0) {
-                resolve(null);
-            } else {
-                resolve(rows[0]);
-            }
-        }).catch(err => {
-            reject(err);
-        });
-    });
+    var sql = `SELECT* 
+    FROM Book
+    INNER JOIN NhaSX ON Book.idNhaSX=NhaSX.idNhaSX
+    INNER JOIN Loai ON Book.idLoai=Loai.idLoai
+    WHERE Book.idSach='${id}'`
+    return db.load(sql);
 };
 
 
@@ -34,16 +28,20 @@ exports.delete = (id) => {
 };
 
 exports.update = (c) => {
-    var sql = `update Book set tac_gia = '${c.tac_gia}',ten_sach = '${c.ten_sach}',
-    								
+    var sql = `update Book set tac_gia = '${c.tacGia}',
+                                    ten_sach = '${c.tenSach}',
     								giaBan ='${c.giaBan}' ,
-    								idNhaSX = '${c.idNhaSX}',
-    								idLoai = '${c.idLoai}'
-    								
+    								idNhaSX = '${c.idNXB}',
+    								idLoai = '${c.idLoai}',
+                                    moTa='${c.moTa}',
+                                    soLuong='${c.soLuong}'
     								 where idSach = ${c.idSach}`;
     // console.log(sql);
-
-
+    return db.save(sql);
+};
+exports.updateHinhAnh = (id, hinh) => {
+    var sql = `update Book set hinhAnh = 'img/book/${hinh}'
+                                     where idSach = ${id}`;
     return db.save(sql);
 };
 

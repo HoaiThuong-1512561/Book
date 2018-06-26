@@ -67,3 +67,30 @@ else {
 }
     return db.load(sql);
 }
+exports.updateLoai = (idLoai,tenLoai)=>{
+    var sql=`UPDATE loai SET tenLoai='${tenLoai}' WHERE idLoai = '${idLoai}'`;
+    return db.save(sql);
+};
+exports.deleteLoai=(idLoai)=>{
+	var sql = `delete from loai where idLoai = ${idLoai}`;
+    return db.save(sql);
+};
+exports.addLoai=(tenLoai)=>{
+    var sql = `insert into loai(tenLoai) values('${tenLoai}')`;
+    return db.save(sql);
+
+};
+exports.updateNXB = (idNXB,tenNXB)=>{
+    var sql=`UPDATE nhasx SET tenNhaSX='${tenNXB}' WHERE idNhaSX = '${idNXB}'`;
+    return db.save(sql);
+};
+exports.addNXB=(tenNXB)=>{
+    var sql = `insert into nhasx(tenNhaSX) values('${tenNXB}')`;
+    return db.save(sql);
+
+};
+
+exports.addNewBook=(Book)=>{
+    var sql=`insert into Book(ngayNhapHang, luotMua, luotXem,idNhaSX,hinhAnh,moTa,idLoai,giaBan,ten_sach,tac_gia,soLuong) values('${Book.ngayNhap}', '0', '0','${Book.idNXB}','img/book/${Book.hinhAnh}','${Book.moTa}','${Book.idLoai}','${Book.giaBan}','${Book.tenSach}','${Book.tacGia}','${Book.soLuong}')`;
+    return db.save(sql);
+};

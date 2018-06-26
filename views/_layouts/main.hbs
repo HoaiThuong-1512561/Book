@@ -29,12 +29,12 @@
     <link rel="stylesheet" id="styles-css" href="/CSS/owl.theme.css" type="text/css" media="all"> {{{_sections.css}}}
     <link rel="stylesheet" href="/CSS/swiper.min.css">
     <link rel="stylesheet" href="/CSS/vn.css">
-    <script type="text/javascript"src="/js/jquery2.js"></script>
+    <script type="text/javascript" src="/js/jquery2.js"></script>
 
-    <script type="text/javascript"src="/js/jquery.js"></script>
-    <script type="text/javascript"src="/js/swiper.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/swiper.min.js"></script>
 
-    <script type="text/javascript"src="/js/vn.js"></script>
+    <script type="text/javascript" src="/js/vn.js"></script>
 
     <link rel="stylesheet" id="font-awesome-css" href="/CSS/font-awesome.min.css" type="text/css" media="all">
     <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
@@ -74,9 +74,11 @@
                         <form action="/tim-voi-key" method="get">
                             <div class="form-search-wrap">
                                 <div class="dropdown-container">
-                                    <div class="dropdown-button" id="dropdown-button"style="color: #0a568c;width: 15%">
+                                    <div class="dropdown-button" id="dropdown-button" style="color: #0a568c;width: 15%">
                                         <select name="selectDanhMuc" style="color: #0a568c;font-size: 14px;font-weight: bold;width: 108%;text-align:left;  border:1px solid #fff;z-index:1000;padding:5px 0;left:-0.2px;height: 40px;top:100%;  text-align:right;position:absolute;">
-                                            <option name="idDanhMuc" id="idDanhMuc1" value="1"><span>Tất cả</span></option>
+                                            <option name="idDanhMuc" id="idDanhMuc1" value="1">
+                                                <span>Tất cả</span>
+                                            </option>
                                             <option name="idDanhMuc" id="idDanhMuc2" value="2">Tựa đề</option>
                                             <option name="idDanhMuc" id="idDanhMuc3" value="3">Tác giả</option>
                                             <option name="idDanhMuc" id="idDanhMuc4" value="4">Nhà SX</option>
@@ -84,15 +86,15 @@
 
                                     </div>
                                     <input type="text" name="keyword" id="keyword" autocomplete="off" placeholder=" Tìm sách theo tựa đề, tác giả hay nhà sản xuất...">
-                                        <button type="submit" >
-                                            <span style="color: #0a568c;font-size: 14px;">Tìm kiếm</span>
-                                        </button>
+                                    <button type="submit">
+                                        <span style="color: #0a568c;font-size: 14px;">Tìm kiếm</span>
+                                    </button>
 
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="header-link fr" >
+                    <div class="header-link fr">
                         <a href="" class="header-link-list fl">
                             <img src="/image/order.png" class="h-icon fl" title="Kiểm tra trạng thái Đơn hàng của bạn">
                             <span class="fl">Theo dõi
@@ -100,360 +102,382 @@
                         </a>
 
                         <div class="header-link-list fl">
-                        {{#if layoutVM.isLogged}}
+                            {{#if layoutVM.isLogged}}
                             <form id="frmLogout" method="post" action="/account/logout"></form>
-                            <img src="/image/user.png" class="h-icon fl">
-                            <span class="fl"><a href="/account/profile">Xin chào: {{layoutVM.curUser.userName}}</a>
+                            <img src="/image/user.png" class="h-icon fl"> {{#if layoutVM.Authorized}}
+                            <span class="fl">
+                                <a href="/manager/dashboard">Xin chào: {{layoutVM.curUser.userName}}</a>
                                 <br>
-                                  <li><a id="lnkLogout" href="javascript:;"><small>Logout</small></a></li>
+                                <li>
+                                    <a id="lnkLogout" href="javascript:;">
+                                        <small>Logout</small>
+                                    </a>
+                                </li>
 
                             </span>
-                        </div>
-                            <div class="header-link fr" >
-                                <div class="cart fl">
-                                    <a href="/cart" target="_blank">
-                                        <img src="/image/cart.png" class="h-icon">
-                                        <span>Giỏ hàng</span>
-                                        <span class="cart-q">{{layoutVM.totalCart}}</span>
-                                    </a>
-                                </div>
-                            </div>
-
-
                             {{else}}
-                            <span class="fl">Đăng nhập
+                            <span class="fl">
+                                <a href="/account/profile">Xin chào: {{layoutVM.curUser.userName}}</a>
                                 <br>
-                                <small>Tài khoản</small>
-                            </span>
+                                <li>
+                                    <a id="lnkLogout" href="javascript:;">
+                                        <small>Logout</small>
+                                    </a>
+                                </li>
 
-                            <div class="h-box clearfloat">
-                                <div class="h-arrow-up fl">
-                                    <span></span>
-                                </div>
-                                <div class="h-box-wrap fl">
-                                    <a href="/account/login" class="h-box-li h-box-l1 userShow1" title="Đăng nhập">Đăng nhập</a>
-                                    <a href="/account/register" class="h-box-li h-box-l1 userShow2" title="Tạo tài khoản mới">Tạo tài khoản</a>
-                                </div>
+                            </span>
+                            {{/if}}
+                        </div>
+
+                        {{#if layoutVM.Authorized}}
+                        
+                        {{else}}
+                        <div class="header-link fr">
+                            <div class="cart fl">
+                                <a href="/cart" target="_blank">
+                                    <img src="/image/cart.png" class="h-icon">
+                                    <span>Giỏ hàng</span>
+                                    <span class="cart-q">{{layoutVM.totalCart}}</span>
+                                </a>
                             </div>
                         </div>
-                            <div class="header-link fr" >
-                                <div class="cart fl">
-                                    <a href="/cart" target="_blank">
-                                        <img src="/image/cart.png" class="h-icon">
-                                        <span>Giỏ hàng</span>
-                                        <span class="cart-q">0</span>
-                                    </a>
-                                </div>
-                            </div>
+{{/if}}
 
-                        {{/if}}
-
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="main-nav" style="margin-left: 58px;height: 6%;width: 120%">
-                <div class="main-container clearfloat" style="width: 100%">
-                    <!--Main navigation-->
-                    <div class="main-nav-wrap comNav fl">
-                        <span class="clearfloat">
-                            <img src="/image/menu.png" class="nav-icon fl">
-                            <span class="nav-long fl">DANH MỤC SẢN PHẨM</span>
-                            <span class="nav-short fl">DANH MỤC</span>
+                        {{else}}
+                        <span class="fl">Đăng nhập
+                            <br>
+                            <small>Tài khoản</small>
                         </span>
-                        <ul class="main-nav-cont">
-                            <li class="main-nav-list">
-                                <a href="/tim-kiem" target="_blank">
-                                    <span class="nav-icon-li"></span>
-                                    <span>Theo Thể Loại</span>
-                                    <div class="nav-arrow-sub">
-                                        <div></div>
-                                    </div>
-                                </a>
-                                <!--http://127.0.0.1:3000/tim-kiem/theo-loai/?id=1-->
-                                <div class="nav-sub">
-                                    <ul class="clearfloat">
-                                        <li class="nav-sub-li fl">
-                                            <a href="/tim-kiem">
-                                                <b>Thể loại</b>
-                                            </a>
-                                        {{#each layoutVM.categories}}
-                                            <a href="/tim-kiem/theo-loai/?id={{idLoai}}">{{tenLoai}}</a>
-                                        {{/each}}
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="main-nav-list">
-                                <a href="/tim-kiem" target="_blank">
-                                    <span class="nav-icon-li"></span>
-                                    <span>Theo Nhà Xuất Bản</span>
-                                    <div class="nav-arrow-sub">
-                                        <div></div>
-                                    </div>
-                                </a>
-                                <div class="nav-sub">
-                                    <ul class="clearfloat">
-                                        <li class="nav-sub-li fl">
-                                            <a href="/tim-kiem">
-                                                <b>Nhà Xuất Bản</b>
-                                            </a>
-                                            {{#each layoutVM.nxb}}
-                                                <a href="/tim-kiem/theo-NhaSX/?id={{idNhaSX}}">{{tenNhaSX}}</a>
-                                            {{/each}}
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            {{!-- <li class="main-nav-list">
-                                <a href="ngoai-ngu.html" target="_blank">
-                                    <span class="nav-icon-li"></span>
-                                    <span>Thường thức - Đời sống</span>
-                                    <div class="nav-arrow-sub">
-                                        <div></div>
-                                    </div>
-                                </a>
-                                <div class="nav-sub">
-                                    <ul class="clearfloat">
-                                        <li class="nav-sub-li fl">
-                                            <a href="ngoai-ngu.html">
-                                                <b>Thể loại</b>
-                                            </a>
-                                            {{#each categories}}
-                                                <a href="{{TT-DS}}.html">{{TT-DS}}</a>
 
-                                            {{/each}}
-
-                                        </li>
-                                        <li class="nav-sub-li fl">
-                                            <a href="detail.html">
-                                                <b>HOT</b>
-                                            </a>
-                                            <a href="ngoai-ngu.html">Nổi bật</a>
-                                            <a href="ngoai-ngu.html">Hàng mới</a>
-                                            <a href="ngoai-ngu.html">Giảm giá</a>
-                                            <a href="ngoai-ngu.html">Bán chạy</a>
-
-                                        </li>
-                                        <li class="nav-sub-li fl">
-                                            <a href="detail.html" target="_blank">
-                                                <img src="/image/li2.jpg" style="height: 300px">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="main-nav-list">
-                                <a href="ngoai-ngu.html" target="_blank">
-                                    <span class="nav-icon-li"></span>
-                                    <span>Sách ngoại văn</span>
-                                    <div class="nav-arrow-sub">
-                                        <div></div>
-                                    </div>
-                                </a>
-                                <div class="nav-sub">
-                                    <ul class="clearfloat">
-                                        <li class="nav-sub-li fl">
-                                            <a href="ngoai-ngu.html">
-                                                <b>Thể loại</b>
-                                            </a>
-                                            {{#each categories}}
-                                                <a href="{{SachNgoaiVan}}.html">{{SachNgoaiVan}}</a>
-
-                                            {{/each}}
-
-                                        </li>
-                                        <li class="nav-sub-li fl">
-                                            <a href="detail.html">
-                                                <b>Ngôn ngữ</b>
-                                            </a>
-                                            <a href="ngoai-ngu.html">Tiếng Anh</a>
-                                            <a href="ngoai-ngu.html">Tiếng Nhật</a>
-                                            <a href="ngoai-ngu.html">Tiếng khác</a>
-
-                                        </li>
-                                        <li class="nav-sub-li fl">
-                                            <a href="detail.html">
-                                                <b>HOT</b>
-                                            </a>
-                                            <a href="ngoai-ngu.html">Nổi bật</a>
-                                            <a href="ngoai-ngu.html">Hàng mới</a>
-                                            <a href="ngoai-ngu.html">Giảm giá</a>
-                                            <a href="ngoai-ngu.html">Bán chạy</a>
-
-                                        </li>
-                                        <li class="nav-sub-li fl">
-                                            <a href="detail.html" target="_blank">
-                                                <img src="/image/li2.jpg" style="height: 300px">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="main-nav-list">
-                                <a href="ngoai-ngu.html" target="_blank">
-                                    <span class="nav-icon-li"></span>
-                                    <span>Sách thiếu nhi</span>
-                                    <div class="nav-arrow-sub">
-                                        <div></div>
-                                    </div>
-                                </a>
-                                <div class="nav-sub">
-                                    <ul class="clearfloat">
-                                        <li class="nav-sub-li fl">
-                                            <a href="ngoai-ngu.html">
-                                                <b>Thể loại</b>
-                                            </a>
-                                            {{#each categories}}
-                                                <a href="{{SachThieuNhi}}.html">{{SachThieuNhi}}</a>
-
-                                            {{/each}}
-
-                                        </li>
-
-                                        <li class="nav-sub-li fl">
-                                            <a href="detail.html">
-                                                <b>HOT</b>
-                                            </a>
-                                            <a href="ngoai-ngu.html">Nổi bật</a>
-                                            <a href="ngoai-ngu.html">Hàng mới</a>
-                                            <a href="ngoai-ngu.html">Giảm giá</a>
-                                            <a href="ngoai-ngu.html">Bán chạy</a>
-
-                                        </li>
-                                        <li class="nav-sub-li fl">
-                                            <a href="detail.html" target="_blank">
-                                                <img src="/image/li2.jpg" style="height: 300px">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="main-nav-list">
-                                <a href="ngoai-ngu.html" target="_blank">
-                                    <span class="nav-icon-li"></span>
-                                    <span>Báo chí</span>
-                                    <div class="nav-arrow-sub">
-                                        <div></div>
-                                    </div>
-                                </a>
-                                <div class="nav-sub">
-                                    <ul class="clearfloat">
-                                        <li class="nav-sub-li fl">
-                                            <a href="ngoai-ngu.html">
-                                                <b>Tên báo</b>
-                                            </a>
-                                            {{#each categories}}
-                                                <a href="{{BaoChi}}.html">{{BaoChi}}</a>
-
-                                            {{/each}}
-
-                                        </li>
-
-                                        <li class="nav-sub-li fl">
-                                            <a href="detail.html">
-                                                <b>HOT</b>
-                                            </a>
-                                            <a href="ngoai-ngu.html">Nổi bật</a>
-                                            <a href="ngoai-ngu.html">Hàng mới</a>
-                                            <a href="ngoai-ngu.html">Giảm giá</a>
-                                            <a href="ngoai-ngu.html">Bán chạy</a>
-
-                                        </li>
-                                        <li class="nav-sub-li fl">
-                                            <a href="detail.html" target="_blank">
-                                                <img src="/image/li2.jpg" style="height: 300px">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="main-nav-list">
-                                <a href="ngoai-ngu.html" target="_blank">
-                                    <span class="nav-icon-li"></span>
-                                    <span>Tạp chí</span>
-                                    <div class="nav-arrow-sub">
-                                        <div></div>
-                                    </div>
-                                </a>
-                                <div class="nav-sub">
-                                    <ul class="clearfloat">
-                                        <li class="nav-sub-li fl">
-                                            <a href="ngoai-ngu.html">
-                                                <b>Tên tạp chí</b>
-                                            </a>
-                                            {{#each categories}}
-                                                <a href="{{TapChi}}.html">{{TapChi}}</a>
-
-                                            {{/each}}
-
-
-                                        </li>
-
-                                        <li class="nav-sub-li fl">
-                                            <a href="detail.html">
-                                                <b>HOT</b>
-                                            </a>
-                                            <a href="ngoai-ngu.html">Nổi bật</a>
-                                            <a href="ngoai-ngu.html">Hàng mới</a>
-                                            <a href="ngoai-ngu.html">Giảm giá</a>
-                                            <a href="ngoai-ngu.html">Bán chạy</a>
-
-                                        </li>
-                                        <li class="nav-sub-li fl">
-                                            <a href="detail.html" target="_blank">
-                                                <img src="/image/li2.jpg" style="height: 300px">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="main-nav-list">
-                                <a target="_blank">
-
-                                    <div style="height: 110px">
-                                        <div></div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="main-nav-list">
-                            </li> --}}
-                        </ul>
+                        <div class="h-box clearfloat">
+                            <div class="h-arrow-up fl">
+                                <span></span>
+                            </div>
+                            <div class="h-box-wrap fl">
+                                <a href="/account/login" class="h-box-li h-box-l1 userShow1" title="Đăng nhập">Đăng nhập</a>
+                                <a href="/account/register" class="h-box-li h-box-l1 userShow2" title="Tạo tài khoản mới">Tạo tài khoản</a>
+                            </div>
+                        </div>
                     </div>
-                    <!--The product you saw-->
-                    <!--<div class="history fl">-->
-                    <!--<img src="image/arrow1.png" class="nav-icon-h">-->
-                    <!--<span>Sản phẩm bạn đã xem</span>-->
-                    <!--<div><span class="n-arrow-up"></span></div>-->
-                    <!--</div>-->
-                    <!--30 days return-->
-                    <a href="#" class="return fl" style="margin-left: 45px">
-                        <img src="/image/return.png" class="nav-icon-s">
-                        <span>30 ngày đổi trả dễ dàng</span>
-                    </a>
-                    <!--genuine product-->
-                    <a href="#" class="genuine fl" style="margin-left: 110px">
-                        <img src="/image/genuine.png" class="nav-icon-s">
-                        <span>Tất cả sản phẩm 100% chính hãng</span>
+                    <div class="header-link fr">
+                        <div class="cart fl">
+                            <a href="/cart" target="_blank">
+                                <img src="/image/cart.png" class="h-icon">
+                                <span>Giỏ hàng</span>
+                                <span class="cart-q">0</span>
+                            </a>
+                        </div>
+                    </div>
 
-                    </a>
-                    <!--custom support-->
-                    <a href="#" class="support fl" style="margin-left: 110px">
-                        <img src="/image/tel.png" class="nav-icon-s">
-                        <span>Hỗ trợ khách hàng</span>
-                    </a>
-                </div>
-            </div>
-            <!--content of history-->
-            <div class="history-cont-wrap">
-                <div class="history-cont">
-                    <p>Bạn chưa xem sản phẩm nào.</p>
-                    <p>Hãy tiếp tục khám phá Tiki, các sản phẩm bạn đã xem sẽ hiển thị ở đây!</p>
+                    {{/if}}
+
+
+
                 </div>
             </div>
         </div>
+        <div class="main-nav" style="margin-left: 58px;height: 6%;width: 120%">
+            <div class="main-container clearfloat" style="width: 100%">
+                <!--Main navigation-->
+                <div class="main-nav-wrap comNav fl">
+                    <span class="clearfloat">
+                        <img src="/image/menu.png" class="nav-icon fl">
+                        <span class="nav-long fl">DANH MỤC SẢN PHẨM</span>
+                        <span class="nav-short fl">DANH MỤC</span>
+                    </span>
+                    <ul class="main-nav-cont">
+                        <li class="main-nav-list">
+                            <a href="/tim-kiem" target="_blank">
+                                <span class="nav-icon-li"></span>
+                                <span>Theo Thể Loại</span>
+                                <div class="nav-arrow-sub">
+                                    <div></div>
+                                </div>
+                            </a>
+                            <!--http://127.0.0.1:3000/tim-kiem/theo-loai/?id=1-->
+                            <div class="nav-sub">
+                                <ul class="clearfloat">
+                                    <li class="nav-sub-li fl">
+                                        <a href="/tim-kiem">
+                                            <b>Thể loại</b>
+                                        </a>
+                                        {{#each layoutVM.categories}}
+                                        <a href="/tim-kiem/theo-loai/?id={{idLoai}}">{{tenLoai}}</a>
+                                        {{/each}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="main-nav-list">
+                            <a href="/tim-kiem" target="_blank">
+                                <span class="nav-icon-li"></span>
+                                <span>Theo Nhà Xuất Bản</span>
+                                <div class="nav-arrow-sub">
+                                    <div></div>
+                                </div>
+                            </a>
+                            <div class="nav-sub">
+                                <ul class="clearfloat">
+                                    <li class="nav-sub-li fl">
+                                        <a href="/tim-kiem">
+                                            <b>Nhà Xuất Bản</b>
+                                        </a>
+                                        {{#each layoutVM.nxb}}
+                                        <a href="/tim-kiem/theo-NhaSX/?id={{idNhaSX}}">{{tenNhaSX}}</a>
+                                        {{/each}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        {{!--
+                        <li class="main-nav-list">
+                            <a href="ngoai-ngu.html" target="_blank">
+                                <span class="nav-icon-li"></span>
+                                <span>Thường thức - Đời sống</span>
+                                <div class="nav-arrow-sub">
+                                    <div></div>
+                                </div>
+                            </a>
+                            <div class="nav-sub">
+                                <ul class="clearfloat">
+                                    <li class="nav-sub-li fl">
+                                        <a href="ngoai-ngu.html">
+                                            <b>Thể loại</b>
+                                        </a>
+                                        {{#each categories}}
+                                        <a href="{{TT-DS}}.html">{{TT-DS}}</a>
+
+                                        {{/each}}
+
+                                    </li>
+                                    <li class="nav-sub-li fl">
+                                        <a href="detail.html">
+                                            <b>HOT</b>
+                                        </a>
+                                        <a href="ngoai-ngu.html">Nổi bật</a>
+                                        <a href="ngoai-ngu.html">Hàng mới</a>
+                                        <a href="ngoai-ngu.html">Giảm giá</a>
+                                        <a href="ngoai-ngu.html">Bán chạy</a>
+
+                                    </li>
+                                    <li class="nav-sub-li fl">
+                                        <a href="detail.html" target="_blank">
+                                            <img src="/image/li2.jpg" style="height: 300px">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="main-nav-list">
+                            <a href="ngoai-ngu.html" target="_blank">
+                                <span class="nav-icon-li"></span>
+                                <span>Sách ngoại văn</span>
+                                <div class="nav-arrow-sub">
+                                    <div></div>
+                                </div>
+                            </a>
+                            <div class="nav-sub">
+                                <ul class="clearfloat">
+                                    <li class="nav-sub-li fl">
+                                        <a href="ngoai-ngu.html">
+                                            <b>Thể loại</b>
+                                        </a>
+                                        {{#each categories}}
+                                        <a href="{{SachNgoaiVan}}.html">{{SachNgoaiVan}}</a>
+
+                                        {{/each}}
+
+                                    </li>
+                                    <li class="nav-sub-li fl">
+                                        <a href="detail.html">
+                                            <b>Ngôn ngữ</b>
+                                        </a>
+                                        <a href="ngoai-ngu.html">Tiếng Anh</a>
+                                        <a href="ngoai-ngu.html">Tiếng Nhật</a>
+                                        <a href="ngoai-ngu.html">Tiếng khác</a>
+
+                                    </li>
+                                    <li class="nav-sub-li fl">
+                                        <a href="detail.html">
+                                            <b>HOT</b>
+                                        </a>
+                                        <a href="ngoai-ngu.html">Nổi bật</a>
+                                        <a href="ngoai-ngu.html">Hàng mới</a>
+                                        <a href="ngoai-ngu.html">Giảm giá</a>
+                                        <a href="ngoai-ngu.html">Bán chạy</a>
+
+                                    </li>
+                                    <li class="nav-sub-li fl">
+                                        <a href="detail.html" target="_blank">
+                                            <img src="/image/li2.jpg" style="height: 300px">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="main-nav-list">
+                            <a href="ngoai-ngu.html" target="_blank">
+                                <span class="nav-icon-li"></span>
+                                <span>Sách thiếu nhi</span>
+                                <div class="nav-arrow-sub">
+                                    <div></div>
+                                </div>
+                            </a>
+                            <div class="nav-sub">
+                                <ul class="clearfloat">
+                                    <li class="nav-sub-li fl">
+                                        <a href="ngoai-ngu.html">
+                                            <b>Thể loại</b>
+                                        </a>
+                                        {{#each categories}}
+                                        <a href="{{SachThieuNhi}}.html">{{SachThieuNhi}}</a>
+
+                                        {{/each}}
+
+                                    </li>
+
+                                    <li class="nav-sub-li fl">
+                                        <a href="detail.html">
+                                            <b>HOT</b>
+                                        </a>
+                                        <a href="ngoai-ngu.html">Nổi bật</a>
+                                        <a href="ngoai-ngu.html">Hàng mới</a>
+                                        <a href="ngoai-ngu.html">Giảm giá</a>
+                                        <a href="ngoai-ngu.html">Bán chạy</a>
+
+                                    </li>
+                                    <li class="nav-sub-li fl">
+                                        <a href="detail.html" target="_blank">
+                                            <img src="/image/li2.jpg" style="height: 300px">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="main-nav-list">
+                            <a href="ngoai-ngu.html" target="_blank">
+                                <span class="nav-icon-li"></span>
+                                <span>Báo chí</span>
+                                <div class="nav-arrow-sub">
+                                    <div></div>
+                                </div>
+                            </a>
+                            <div class="nav-sub">
+                                <ul class="clearfloat">
+                                    <li class="nav-sub-li fl">
+                                        <a href="ngoai-ngu.html">
+                                            <b>Tên báo</b>
+                                        </a>
+                                        {{#each categories}}
+                                        <a href="{{BaoChi}}.html">{{BaoChi}}</a>
+
+                                        {{/each}}
+
+                                    </li>
+
+                                    <li class="nav-sub-li fl">
+                                        <a href="detail.html">
+                                            <b>HOT</b>
+                                        </a>
+                                        <a href="ngoai-ngu.html">Nổi bật</a>
+                                        <a href="ngoai-ngu.html">Hàng mới</a>
+                                        <a href="ngoai-ngu.html">Giảm giá</a>
+                                        <a href="ngoai-ngu.html">Bán chạy</a>
+
+                                    </li>
+                                    <li class="nav-sub-li fl">
+                                        <a href="detail.html" target="_blank">
+                                            <img src="/image/li2.jpg" style="height: 300px">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="main-nav-list">
+                            <a href="ngoai-ngu.html" target="_blank">
+                                <span class="nav-icon-li"></span>
+                                <span>Tạp chí</span>
+                                <div class="nav-arrow-sub">
+                                    <div></div>
+                                </div>
+                            </a>
+                            <div class="nav-sub">
+                                <ul class="clearfloat">
+                                    <li class="nav-sub-li fl">
+                                        <a href="ngoai-ngu.html">
+                                            <b>Tên tạp chí</b>
+                                        </a>
+                                        {{#each categories}}
+                                        <a href="{{TapChi}}.html">{{TapChi}}</a>
+
+                                        {{/each}}
+
+
+                                    </li>
+
+                                    <li class="nav-sub-li fl">
+                                        <a href="detail.html">
+                                            <b>HOT</b>
+                                        </a>
+                                        <a href="ngoai-ngu.html">Nổi bật</a>
+                                        <a href="ngoai-ngu.html">Hàng mới</a>
+                                        <a href="ngoai-ngu.html">Giảm giá</a>
+                                        <a href="ngoai-ngu.html">Bán chạy</a>
+
+                                    </li>
+                                    <li class="nav-sub-li fl">
+                                        <a href="detail.html" target="_blank">
+                                            <img src="/image/li2.jpg" style="height: 300px">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="main-nav-list">
+                            <a target="_blank">
+
+                                <div style="height: 110px">
+                                    <div></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="main-nav-list">
+                        </li> --}}
+                    </ul>
+                </div>
+                <!--The product you saw-->
+                <!--<div class="history fl">-->
+                <!--<img src="image/arrow1.png" class="nav-icon-h">-->
+                <!--<span>Sản phẩm bạn đã xem</span>-->
+                <!--<div><span class="n-arrow-up"></span></div>-->
+                <!--</div>-->
+                <!--30 days return-->
+                <a href="#" class="return fl" style="margin-left: 45px">
+                    <img src="/image/return.png" class="nav-icon-s">
+                    <span>30 ngày đổi trả dễ dàng</span>
+                </a>
+                <!--genuine product-->
+                <a href="#" class="genuine fl" style="margin-left: 110px">
+                    <img src="/image/genuine.png" class="nav-icon-s">
+                    <span>Tất cả sản phẩm 100% chính hãng</span>
+
+                </a>
+                <!--custom support-->
+                <a href="#" class="support fl" style="margin-left: 110px">
+                    <img src="/image/tel.png" class="nav-icon-s">
+                    <span>Hỗ trợ khách hàng</span>
+                </a>
+            </div>
+        </div>
+        <!--content of history-->
+        <div class="history-cont-wrap">
+            <div class="history-cont">
+                <p>Bạn chưa xem sản phẩm nào.</p>
+                <p>Hãy tiếp tục khám phá Tiki, các sản phẩm bạn đã xem sẽ hiển thị ở đây!</p>
+            </div>
+        </div>
+    </div>
     </div>
     <div>
 
@@ -482,11 +506,10 @@
     <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        $('#lnkLogout').on('click', function() {
+        $('#lnkLogout').on('click', function () {
             $('#frmLogout').submit();
         });
-    </script>
-    {{{_sections.js}}}
+    </script> {{{_sections.js}}}
 </body>
 
 </html>

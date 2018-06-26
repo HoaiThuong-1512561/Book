@@ -4,6 +4,8 @@
 var express = require('express');
 var categoryRepo = require('../repos/categoryRepo');
 var helpers = require('handlebars-helpers')();
+var products= require('../repos/ProductRePo');
+
 var router = express.Router();
 
 var p1 = categoryRepo.loadAllLoai();
@@ -24,13 +26,13 @@ router.get('/', (req, res) => {
 
 router.get('/theo-loai/', (req, res) => {
     var p3 =categoryRepo.load_by_idLoai(req.query.id);
-    // p3 = helpers.array();
-    Promise.all([p1, p3,p4]).then(([rowloais, rowBooks,rowNhaSXs]) => {
+    var p5= products.loadTheLoai(req.query.id);
+    Promise.all([p1, p3,p4,p5]).then(([rowloais, rowBooks,rowNhaSXs,loaifull]) => {
         var vm = {
             loai: rowloais,
             book:rowBooks,
-            NhaSX:rowNhaSXs
-
+            NhaSX:rowNhaSXs,
+            loaifull:loaifull[0]
         };
         res.render('search/tim-theo-loai', vm);
     });
@@ -49,5 +51,6 @@ router.get('/theo-NhaSX/', (req, res) => {
     });
 
 });
+
 
 module.exports = router;

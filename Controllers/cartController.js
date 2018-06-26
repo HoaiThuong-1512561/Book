@@ -4,17 +4,17 @@
 var express = require('express');
 var cartRepo = require('../repos/cartRepo'),
     productRepo = require('../repos/ProductRepo'),
-    payRepo=require('../repos/payRepo'),
-    accountRepo=require('../repos/accountRepo');
+    payRepo = require('../repos/payRepo'),
+    accountRepo = require('../repos/accountRepo');
 var router = express.Router();
 router.get('/', (req, res) => {
-    accountRepo.getCus(req.session.user.idNguoiSuDung).then(rows=>{
+    accountRepo.getCus(req.session.user.idNguoiSuDung).then(rows => {
         var vm = {
             items: req.session.cart,
             total: cartRepo.getTotal(req.session.cart),
             isEmpty: req.session.cart.length === 0,
-            diaChi:rows[0].diaChi,
-            SDT:rows[0].soDT,
+            diaChi: rows[0].diaChi,
+            SDT: rows[0].soDT,
         };
         res.render('cart/index', vm);
     });
@@ -22,13 +22,12 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     cartRepo.remove(req.session.cart, req.body.idSach);
-    var vm = {
-        items: req.session.cart,
-        total: cartRepo.getTotal(req.session.cart),
-        isEmpty: req.session.cart.length === 0,
-    };
-    res.render('cart/index', vm);
+    res.redirect('/cart');
 
+});
+router.post('/sl', (req, res) => {
+    cartRepo.updateSL(req.session.cart, req.body.idSach, req.body.sl);
+    res.redirect('/cart');
 });
 
 router.post('/add', (req, res) => {
@@ -42,7 +41,7 @@ router.post('/add', (req, res) => {
             amount: rows[0].giaBan * +req.body.sl
         };
         cartRepo.add(req.session.cart, item);
-       
+
         res.redirect('/sample_product/?id=' + req.body.idSach);
     });
 });
@@ -50,19 +49,44 @@ router.post('/tt', (req, res) => {
 
     var date = new Date().toLocaleString().slice(0, 19).replace('T', ' ');
     var cart = req.session.cart;
+    if (cart.length === 0) {
+        vm = {
+            ErrMsg: true,
+            Msg: "Không có sản phẩm trong giỏ hàng"
+        }
+        res.render('cart/index', vm);
+        return;
+    }
+    
+    for (i = cart.length - 1; i >= 0; i--) {
+        var soluong=parseInt(cart[i].sl);
+        payRepo.getBook(cart[i].idSach).then(rows=>{
+            if (parseInt(rows[0].soLuong) < soluong){
+                res.redirect('/cart')
+                return;
+            }
+        });
+    }
     var idGioHang;
-    payRepo.addCart(cartRepo.getTotal(req.session.cart)).then(value=>{
-        idGioHang=value.insertId;
-        for (i = cart.length - 1; i >= 0; i--) { 
+    payRepo.addCart(cartRepo.getTotal(req.session.cart)).then(value => {
+        idGioHang = value.insertId;
+        for (i = cart.length - 1; i >= 0; i--) {
+            
             payRepo.addPToCart(cart[i].idSach, cart[i].sl, idGioHang);
-            if (i==0){
-                accountRepo.getCus(req.session.user.idNguoiSuDung).then(use=>{
-                    payRepo.addPayment(idGioHang,use[0].idKhachHang,use[0].diaChi,date,use[0].soDT).then(value=>{
-                        req.session.cart=[];
-                        res.redirect('/cart');             
+            var sl=parseInt(cart[i].sl);
+            payRepo.getBook(cart[i].idSach).then(row=>{
+                var slUpdate=parseInt(row[0].soLuong)-sl;
+                var lmUpdate=parseInt(row[0].luotMua)+1;
+                payRepo.updateSLBook(row[0].idSach,lmUpdate,slUpdate);
+            });
+            if (i == 0) {
+                accountRepo.getCus(req.session.user.idNguoiSuDung).then(use => {
+                    payRepo.addPayment(idGioHang, use[0].idKhachHang, use[0].diaChi, date, use[0].soDT).then(value => {
+                        req.session.cart = [];
+                        res.redirect('/cart');
                     });
                 });
-                
+
             }
         }
     });

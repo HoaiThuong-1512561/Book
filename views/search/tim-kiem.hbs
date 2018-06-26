@@ -185,13 +185,14 @@
                             </tr>
                 {{/withGroup}}
                     </thead>
+<<<<<<< HEAD
                         <tbody>
                         {{#withGroup book 4}}
                             <tr>
                                 {{#each this}}
                                     <td>
                                     <div class="item" >
-                                        <li class="item-outer" >
+                                        <li class="item-outer" style="width: 24%">
                                             <a class="item-thumb" href="sample_product/?id={{idSach}}" rel="nofollow">
                                                 <img width="200" height="280" src="/{{hinhAnh}}" class="attachment-thumbnail-rectangle wp-post-image" alt="nhumuadongroixuong">
                                                 <span class="item-percent-bubble">-10%</span>
@@ -202,16 +203,17 @@
                                                 </h3>
                                                 <em class="item-author">{{tac_gia}}</em>
                                                 <p class="item-price">
-                                                    <strong>{{giaBan}}
+                                                    <strong>{{number_format giaBan}}
                                                         <u>đ</u>
                                                     </strong>
-                                                    <small>{{giaBan}}
+                                                    <small>{{number_format giaBan}}
                                                         <u>đ</u>
                                                     </small>
                                                 </p>
                                             </div>
                                         </li>
                                     </div>
+
                                 </td>
                                 {{/each}}
                             </tr>
