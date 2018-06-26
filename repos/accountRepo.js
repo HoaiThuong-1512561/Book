@@ -39,3 +39,7 @@ exports.updateAddressCus=user=>{
     var sql = `UPDATE KhachHang SET diaChi='${user.diachi}' WHERE idKhachHang = '${user.idCus}'`;
     return db.save(sql);
 };
+exports.deleteUser=(username)=>{
+    var sql=`DELETE FROM nguoidung WHERE userName='${username}'`;
+    return db.save(sql);
+};

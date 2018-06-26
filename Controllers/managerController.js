@@ -4,6 +4,7 @@ var categoryRepo = require('../repos/categoryRepo');
 var payRepo = require('../repos/payRepo');
 var router = express.Router();
 var manager = require('../repos/managerRepo');
+var acountRepo=require('../repos/accountRepo');
 var SHA256 = require('crypto-js/sha256');
 var formidable = require('formidable');
 var fs = require('fs');
@@ -97,7 +98,7 @@ router.post('/nxb/add', (req, res) => {
     res.render('manager/add/addNXB', vm);
 });
 
-router.get('/Acount', restrict, (req, res) => {
+router.get('/acount', restrict, (req, res) => {
     manager.loadAcount().then(rows => {
         var vm = {
             user: rows
@@ -105,7 +106,7 @@ router.get('/Acount', restrict, (req, res) => {
         res.render('manager/qly-acount', vm);
     });
 });
-router.post('/Acount', restrict, (req, res) => {
+router.post('/acount', restrict, (req, res) => {
     var str = "12345678";
     console.log(SHA256(str).toString());
     console.log(req.body.name);
@@ -114,7 +115,7 @@ router.post('/Acount', restrict, (req, res) => {
             var vm = {
                 user: rows,
                 showMsg: true,
-                Msg: 'Reset password thành công!'
+                Msg: 'Reset password thành công! mật khẩu mặc định: 12345678'
             }
             res.render('manager/qly-acount', vm);
         });
@@ -229,7 +230,7 @@ router.post('/sanpham/edit', (req, res, next) => {
                 res.render('manager/edit/editSanPham', vm);
             });
         });
-        
+
 
 
 
@@ -292,6 +293,18 @@ router.post('/sanpham/add', function (req, res, next) {
     });
 
 
+});
+router.get('/acount/delete', (req, res) => {
+    var vm = {
+        userName: req.query.id
+    };
+    res.render('manager/delete/deleteAcount', vm);
+});
+
+router.post('/acount/delete', (req, res) => {
+    acountRepo.deleteUser(req.body.userName);
+    res.redirect('/manager/acount');
+    
 });
 
 

@@ -34,26 +34,23 @@
                     </thead>
                     <tbody>
                         {{#each user}}
-
-
                         <tr>
                             <form action="" method="POST">
                                 <td>{{userName}} </td>
                                 <td>{{hoTen}} </td>
                                 <td>{{loaiNguoiDung}}</td>
-                                <input type="text" name="name" class="hidden" value="{{userName}}">
                                 <td>
+                                    <input value="{{userName}}" type="text" name="name" class="hidden">
+
                                     <button class="btn btn-info" type="submit">Reset</button>
                                 </td>
-                                <td>
-                                    <button class="btn btn-danger" type="submit">Delete</button>
-                                </td>
                             </form>
-
+                            <td>
+                                <a class="btn" href="/manager/acount/delete?id={{userName}}" role="button" style="background-color: salmon">
+                                    Xóa
+                                </a>
+                            </td>
                         </tr>
-
-
-
                         {{/each}}
 
                     </tbody>
