@@ -1,7 +1,9 @@
 var db = require('../fn/db');
 
 exports.searchById = (id) => {
-    var sql = `Select* from Book where idSach = ${id}`;
+    var sql = `Select* from Book
+    INNER JOIN NhaSX ON Book.idNhaSX=NhaSX.idNhaSX
+    where idSach = ${id}`;
     return db.load(sql);
 }
 exports.loadByViews = () => {

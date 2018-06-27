@@ -7,6 +7,11 @@ var helpers = require('handlebars-helpers');
 var array = helpers.array();
 var formidable = require('express-formidable');
 var path = require('path');
+var ss=require('handlebars-dateformat');
+var Handlebars = require('handlebars');
+var HandlebarsIntl = require('handlebars-intl');
+
+Handlebars.registerHelper('dateFormat', require('handlebars-dateformat'));
 
 
 var handleLayoutMDW = require('./middle-wares/handleLayout'),
@@ -70,6 +75,9 @@ app.engine('hbs', exphbs({
         }
     }
 }));
+
+
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, "views"));
 app.use(express.static(path.resolve(__dirname, 'public')));
@@ -87,7 +95,7 @@ app.use('/sample_product', ProductController);
 app.use('/SP', SPController);
 app.use('/manager',managerController);
 app.use('/account', accountController);
-app.use('/cart', restrict, cartController);
+app.use('/cart', cartController);
 app.use('/tim-kiem', categoryController);
 app.use('/tim-voi-key', SearchController);
 

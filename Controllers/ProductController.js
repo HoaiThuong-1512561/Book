@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
         Promise.all([p1, p2,p3,p4]).then(([kind, products,Theloai,lx]) => {
             var vm={
                 products: rows,
+                url:"/sample_product?id="+req.query.id,
                 kind:kind,
                 nxb:products,
                 tl:Theloai[0]

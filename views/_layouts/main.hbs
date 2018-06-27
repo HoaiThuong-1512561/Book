@@ -4,7 +4,7 @@
 
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Nhà sách</title>
+    <title>Nhà sách </title>
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -98,7 +98,7 @@
                         <a href="" class="header-link-list fl">
                             <img src="/image/order.png" class="h-icon fl" title="Kiểm tra trạng thái Đơn hàng của bạn">
                             <span class="fl">Theo dõi
-                                <br>đơn hàng</span>
+                                <br>đơn hàng </span>
                         </a>
 
                         <div class="header-link-list fl">
@@ -128,10 +128,7 @@
                             </span>
                             {{/if}}
                         </div>
-
-                        {{#if layoutVM.Authorized}}
-                        
-                        {{else}}
+                        {{#if layoutVM.Authorized}} {{else}}
                         <div class="header-link fr">
                             <div class="cart fl">
                                 <a href="/cart" target="_blank">
@@ -141,9 +138,7 @@
                                 </a>
                             </div>
                         </div>
-{{/if}}
-
-                        {{else}}
+                        {{/if}} {{else}}
                         <span class="fl">Đăng nhập
                             <br>
                             <small>Tài khoản</small>
@@ -154,7 +149,7 @@
                                 <span></span>
                             </div>
                             <div class="h-box-wrap fl">
-                                <a href="/account/login" class="h-box-li h-box-l1 userShow1" title="Đăng nhập">Đăng nhập</a>
+                                <a href="/account/login?retUrl={{url}}" class="h-box-li h-box-l1 userShow1" title="Đăng nhập">Đăng nhập</a>
                                 <a href="/account/register" class="h-box-li h-box-l1 userShow2" title="Tạo tài khoản mới">Tạo tài khoản</a>
                             </div>
                         </div>
@@ -164,7 +159,7 @@
                             <a href="/cart" target="_blank">
                                 <img src="/image/cart.png" class="h-icon">
                                 <span>Giỏ hàng</span>
-                                <span class="cart-q">0</span>
+                                <span class="cart-q">{{layoutVM.totalCart}}</span>
                             </a>
                         </div>
                     </div>

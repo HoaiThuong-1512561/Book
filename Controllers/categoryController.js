@@ -16,6 +16,7 @@ var p4 = categoryRepo.loadAllPD();
 router.get('/', (req, res) => {
     Promise.all([p1, p2,p4]).then(([rowloais, rowBooks,rowNhaSXs]) => {
         var vm = {
+            url:"/tim-kiem",
             loai: rowloais,
             book:rowBooks,
             NhaSX:rowNhaSXs

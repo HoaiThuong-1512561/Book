@@ -16,7 +16,7 @@
             <h3 class="text-left">Chi tiết đơn hàng</h3>
             <span>Đơn hàng: {{donhang.idThanhToan}}</span>
             <div>
-                <span>Đặt ngày: {{donhang.ngayDatHang}}</span>
+                <span>Đặt ngày: {{dateFormat donhang.ngayDatHang "DD/MM/YYYY, h:mm:ss a"}}</span>
                 <span class="right">Tổng cộng: {{number_format donhang.tongGia}}đ</span>
                 <hr />
             </div>

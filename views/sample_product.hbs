@@ -30,7 +30,7 @@
                             <img src="http://tala.tikicdn.com/assets/img/book-review-btn.png" height="21" width="100" alt="">
                         </a>
                         <a id="product-magiczoom" class="js-book-review-show" href="#">
-                            <img itemprop="image" src="/{{hinhAnh}}">
+                            <img style="    width: 300px;" itemprop="image" src="/{{hinhAnh}}">
                         </a>
                     </div>
                 </div>
@@ -59,7 +59,8 @@
                                 </p>
                                 <br>
                                 <span>
-                                    <em>Bìa Mềm</em>
+                                    <em>Nhà xuất bản: </em>
+                                    <a href="/tim-kiem/theo-NhaSX?id={{idNhaSX}}">{{tenNhaSX}}</a>
                                 </span>
                             </div>
                             <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
@@ -67,8 +68,8 @@
                                 <meta itemprop="price" content="26000">
                             </div>
                             <p class="old-price-item" data-value="35000" id="p-listpirce">
-                                <span>Giá bìa:</span>
-                                <span>{{number_format giaBan}}&nbsp;₫</span>
+                                <span>Lượt Xem: <b>{{luotXem}}</b> - Lượt Mua: <b>{{luotMua}}</b></span>
+        
                             </p>
                             <p class="special-price-item" data-value="26000" id="p-specialprice">
                                 <span>Tại Tiki:</span>
@@ -87,7 +88,7 @@
                                 <span>23.400&nbsp;₫</span>
                             </p>
                             <p class="cachep-stock-left">
-                                <span>Chỉ còn 2 sản phẩm</span>
+                                <span><b>Còn {{soLuong}} sản phẩm</b></span>
                             </p>
 
                         </div>
@@ -153,6 +154,7 @@
                                             </div>
                                         </p>
                                     </div>
+                                    <input type="text" class="hidden" name="url" value="/sample_product/?id={{idSach}}">
                                     <button class="add-to-cart js-add-to-cart is-css" type="submit" data-original-title="">
                                         <span class="text">
                                             Thêm Vào Giỏ Hàng

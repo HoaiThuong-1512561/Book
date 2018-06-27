@@ -1,7 +1,7 @@
 var express = require('express');
 var SHA256 = require('crypto-js/sha256');
 var moment = require('moment');
-
+var format = require('date-format');
 var accountRepo = require('../repos/accountRepo');
 var payRepo=require('../repos/payRepo');
 var restrict = require('../middle-wares/restrict');
@@ -58,7 +58,6 @@ router.post('/login', (req, res) => {
         if (rows.length > 0) {
             req.session.isLogged = true;
             req.session.user = rows[0];
-            req.session.cart = [];
             req.session.Authorized=rows[0].loaiNguoiDung;
             if (rows[0].loaiNguoiDung===0){
                 var url = '/';
@@ -150,7 +149,7 @@ router.post('/edit-info',(req,res)=>{
 router.post('/logout', (req, res) => {
     req.session.isLogged = false;
     req.session.user = null;
-    req.session.Authorized = -1;
+    req.session.Authorized = 0;
     //req.session.cart = [];
     res.redirect(req.headers.referer);
 });
