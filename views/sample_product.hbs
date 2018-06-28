@@ -2,7 +2,7 @@
     <div class="primary-outer">
         <div class="single-header fluid fluid-nomargin clearfix">
             <div class="grid8">
-                <ul class="breadcrumb no-style" xmlns:v="http://rdf.data-vocabulary.org/#">
+                <ul class="breadcrumb no-style" xmlns:v="">
                     <li typeof="v:Breadcrumb">
                         <a rel="v:url" property="v:title" href="/">Trang chủ</a>
                         
@@ -20,21 +20,21 @@
             </div>
         </div>
        
-        <div class="row" itemscope="" itemtype="http://schema.org/Product">
+        <div class="row" itemscope="" itemtype="">
             <div class="col-md-5">
                 <div class="image-box js-image-box no-left">
 
                     <div class="magiczoom">
 
                         <a href="#" class="book-review-btn">
-                            <img src="http://tala.tikicdn.com/assets/img/book-review-btn.png" height="21" width="100" alt="">
+                            <img style="margin-left: 200px" src="http://tala.tikicdn.com/assets/img/book-review-btn.png" height="21" width="100" alt="">
                         </a>
                         <a id="product-magiczoom" class="js-book-review-show" href="#">
-                            <img style="    width: 300px;" itemprop="image" src="/{{hinhAnh}}">
+                            <img style="    width: 250px;margin-left: 60px" itemprop="image" src="/{{hinhAnh}}">
                         </a>
                     </div>
                 </div>
-                <div class="social-wrapper" style="/* text-align: left; */ margin-left: 60px">
+                <div class="social-wrapper" style="/* text-align: left; */ margin-left: 110px">
                     <div class="fb-like fb_iframe_widget" style="margin-bottom:10px; top: -5px;" data-href="#" data-width="300" data-layout="button_count"
                         data-action="like" data-show-faces="false" data-share="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=220558114759707&amp;container_width=413&amp;href=http%3A%2F%2Ftiki.vn%2Fdu-hanh-nguoc-thoi-gian-nguoi-la-ma-o-thanh-rome-p90325.html&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=false&amp;width=300">
                         <span style="vertical-align: bottom; width: 139px; height: 20px;">
@@ -45,19 +45,28 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-7">
-                <div class="item-box">
-                    <h1 class="item-name" itemprop="name" style="font-size: 36px;">
-                        {{ten_sach}} </h1>
-                    <div class="item-row1">
-                        <div class="item-price">
+            <div class="col-md-7"style="margin-left: -80px">
 
+                <div class="item-box">
+                    <h1 class="item-name" itemprop="name" style="font-size: 30px;margin-bottom: 20px">
+                        {{ten_sach}} </h1>
+
+                    <div class="item-row1">
+
+                        <div class="item-price">
+                            <div class="item-promotion">
+                                <div class="item-promotion-title"style="color: #00aaf1">
+                                    <h2>Thông tin sách</h2>
+
+                                </div>
+                            </div>
                             <div class="item-brand">
-                                <h6>Tác giả</h6>
-                                <p>
-                                    <a target="_blank" href="#">{{tac_gia}}</a>
-                                </p>
-                                <br>
+                                <span>
+                                    <em>Tác giả: </em>
+                                    <a href="#">{{tac_gia}}</a>
+                                </span>
+                            </div>
+                            <div class="item-brand">
                                 <span>
                                     <em>Nhà xuất bản: </em>
                                     <a href="/tim-kiem/theo-NhaSX?id={{idNhaSX}}">{{tenNhaSX}}</a>
@@ -67,16 +76,16 @@
                                 <meta itemprop="priceCurrency" content="VND">
                                 <meta itemprop="price" content="26000">
                             </div>
-                            <p class="old-price-item" data-value="35000" id="p-listpirce">
+                            <p class="item-brand" data-value="35000" id="p-listpirce">
                                 <span>Lượt Xem: <b>{{luotXem}}</b> - Lượt Mua: <b>{{luotMua}}</b></span>
         
                             </p>
-                            <p class="special-price-item" data-value="26000" id="p-specialprice">
+                            <p class="item-brand" data-value="26000" id="p-specialprice">
                                 <span>Tại Tiki:</span>
                                 <span id="span-price">{{number_format giaBan}}&nbsp;₫</span>
                                 <span>(Đã có VAT)</span>
                             </p>
-                            <p class="saleoff-price-item">
+                            <p class="item-brand">
                                 <span>Tiết kiệm:</span>
                                 <span>0&nbsp;₫ (0%)</span>
                             </p>
@@ -87,49 +96,39 @@
                                 </span>
                                 <span>23.400&nbsp;₫</span>
                             </p>
-                            <p class="cachep-stock-left">
+                            <p class="item-brand">
                                 <span><b>Còn {{soLuong}} sản phẩm</b></span>
                             </p>
 
                         </div>
                         <div class="item-other">
-                            <p class="item-review-now">
-                                <a id="write_review" href="#goto_write_review">Viết nhận xét để nhận Tiki Xu</a>
-                            </p>
-                            <div class="item-benefit">
-                                <p>
-                                    <span class="js-product-gift-icon" data-toggle="tooltip" data-title="Miễn phí đổi trả nếu sản phẩm hư hỏng trong 7 ngày đầu tiên (do Nhà Cung Cấp). Thông tin đầy đủ về đổi-trả-bảo hành, mời quý khách xem chi tiết."
-                                        data-placement="bottom" data-original-title="" title="">Miễn phí đổi trả trong vòng 7 ngày</span>
-                                    <a href="/doi-tra-de-dang" target="_blank" class="has-icon">Chi tiết</a>
-                                </p>
-                                <p>
-                                    Xem thêm
-                                    <a href="/author/nhieu-tac-gia.html">sách truyện của Nhiều Tác Giả</a> tại Tiki.vn
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-promotion">
-                        <div class="item-promotion-title">
-                            <h2>Thông tin &amp; Khuyến mãi</h2>
-                        </div>
-                        <div class="item-promotion-content">
-                            <ul class="no-left">
-                                <li>
-                                    <p>Với mỗi
-                                        <span style="color: #ff0000;">
+
+
+                            <div class="item-promotion">
+                                <div class="item-promotion-title"style="color: #00aaf1">
+                                    <h2>Dịch vụ &amp; Khuyến mãi</h2>
+                                </div>
+                                <div class="item-promotion-content">
+                                    <ul class="no-left">
+                                        <li>
+                                            Với mỗi
+                                                <span style="color: #000;">
                                             <strong>100.000đ</strong>
-                                        </span> trong đơn hàng, quý khách được tặng
-                                        <span style="color: #ff0000;">
+                                        </span> đơn hàng, quý khách được tặng
+                                                <span style="color: #000;">
                                             <strong>300</strong>
-                                        </span> Tiki Xu.</p>
-                                    <a href="#freegift-popup-84" class="has-icon js-open-freegift">Chi tiết</a>
-                                </li>
-                                <li>Đăng ký
-                                    <a target="blank" href="http://tiki.vn/bookcare">dịch vụ BookCare</a> để được bọc plastic đến 99% sách tại Tiki.vn</li>
-                                <li>Nhận hàng từ
-                                    <span id="delivery_time" style="color: black">2 - 3 ngày</span> , không kể Thứ 7 &amp; CN.</li>
-                            </ul>
+                                        </span> Xu
+                                        </li>
+                                        <li>Miễn phí đổi trả trong vòng 7 ngày</li>
+                                        <li>Nhận hàng từ
+                                            <span id="delivery_time" style="color: black">2 - 3 ngày</span> , không kể Thứ 7 &amp; CN.</li>
+                                        <li>Đăng ký
+                                            <a target="blank" href=""style="color: #000"><strong>dịch vụ BookCare</strong></a> để được bọc plastic đến 99% sách</li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <!--<form role="form" id="add-to-cart" action="/checkout/ajaxAdd">-->
@@ -144,7 +143,7 @@
 
 
                                 <div class="quantity-col2">
-                                    <p class="quantity-label">Số lượng:</p>
+                                    <p class="quantity-label"style="margin-left: -30px">Số lượng:</p>
                                     <div class="quantity-col1">
                                         <p class="tiki-number-input">
                                             <div class="input-group bootstrap-touchspin">

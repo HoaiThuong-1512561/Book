@@ -4,6 +4,8 @@
 
 var express = require('express');
 var categoryRepo = require('../repos/categoryRepo');
+var helpers = require('handlebars-helpers')();
+
 var router = express.Router();
 
 var p1 = categoryRepo.loadAllLoai();

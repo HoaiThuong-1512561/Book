@@ -41,12 +41,13 @@ router.get('/theo-loai/', (req, res) => {
 });
 router.get('/theo-NhaSX/', (req, res) => {
     var p3 =categoryRepo.load_by_idNhaSX(req.query.id);
-    Promise.all([p1, p3,p4]).then(([rowloais, rowBooks,rowNhaSXs]) => {
+    var p5= products.loadNhaSX(req.query.id);
+    Promise.all([p1, p3,p4,p5]).then(([rowloais, rowBooks,rowNhaSXs,nsx]) => {
         var vm = {
             loai: rowloais,
             book:rowBooks,
-            NhaSX:rowNhaSXs
-
+            NhaSX:rowNhaSXs,
+            nsx:nsx[0]
         };
         res.render('search/theo-nhasx', vm);
     });

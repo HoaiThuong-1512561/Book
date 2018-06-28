@@ -35,6 +35,10 @@ exports.loadTheLoai = (idTheLoai) => {
     var sql= `select * from loai where idLoai=${idTheLoai}`;
     return db.load(sql);
 }
+exports.loadNhaSX = (idNXB) => {
+    var sql= `select * from NhaSX where idNhaSX=${idNXB}`;
+    return db.load(sql);
+}
 exports.updateLX=(idSach,lx)=>{
     var sql=`update Book set luotXem = '${lx}'
      where idSach = ${idSach}`

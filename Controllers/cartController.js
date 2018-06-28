@@ -61,7 +61,8 @@ router.post('/tt', (req, res) => {
 
 
 
-        var date = new Date().toLocaleString().slice(0, 19).replace('T', ' ');
+        var date = new Date();
+        console.log(date);
         var cart = req.session.cart;
         if (cart.length === 0) {
             vm = {
@@ -95,7 +96,7 @@ router.post('/tt', (req, res) => {
                 });
                 if (i == 0) {
                     accountRepo.getCus(req.session.user.idNguoiSuDung).then(use => {
-                        payRepo.addPayment(idGioHang, use[0].idKhachHang, use[0].diaChi, date, use[0].soDT).then(value => {
+                        payRepo.addPayment(idGioHang, use[0].idKhachHang, use[0].diaChi, new Date(), use[0].soDT).then(value => {
                             req.session.cart = [];
                             res.redirect('/cart');
                         });

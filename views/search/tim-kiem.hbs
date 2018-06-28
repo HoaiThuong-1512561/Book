@@ -309,15 +309,15 @@
     $(function () {
         $('#example1').DataTable({
             'paging': true,
-            "aLengthMenu": [[4, 8, 12, -1], [4, 8, 12, "All"]],
+            "aLengthMenu": [[2, 8, 12, -1], [8, 32, 48, "All"]],
             'lengthChange': true,
             'searching': false,
             'ordering': true,
             'info': true,
             'autoWidth': true,
             'language': {
-                "lengthMenu": "Hiển thị _MENU_ dòng",
-                "info": "Đang hiển thị _START_ tới _END_ tổng số _TOTAL_ kết quả",
+                "lengthMenu": "Hiển thị _MENU_ sản phẩm trên 1 trang",
+                "info": "Đang hiển thị _START_->_END_ trên tổng _TOTAL_ dòng(4 kquả tối đa/dòng)",
                 "paginate": {
                     "first": "Trang đầu",
                     "last": "Trang cuối",
