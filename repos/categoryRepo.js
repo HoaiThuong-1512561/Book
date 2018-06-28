@@ -67,6 +67,11 @@ else {
 }
     return db.load(sql);
 }
+exports.search_with_price = (giadau,giacuoi) => {
+
+    var sql = `Select * from book where giaBan>='${giadau}' and giaBan<='${giacuoi}'`;
+    return db.load(sql);
+}
 exports.updateLoai = (idLoai,tenLoai)=>{
     var sql=`UPDATE loai SET tenLoai='${tenLoai}' WHERE idLoai = '${idLoai}'`;
     return db.save(sql);
@@ -96,5 +101,9 @@ exports.addNewBook=(Book)=>{
 };
 exports.loadNXB=(idNXB)=>{
     var sql=`Select * from NhaSX where idNhaSX='${idNXB}'`;
+    return db.load(sql);
+};
+exports.loadL=(idLoai)=>{
+    var sql=`Select * from loai  where idLoai='${idLoai}'`;
     return db.load(sql);
 };

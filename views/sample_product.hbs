@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-7"style="margin-left: -80px">
+            <div class="col-md-5"style="margin-left: -80px;width: 65%">
 
                 <div class="item-box">
                     <h1 class="item-name" itemprop="name" style="font-size: 30px;margin-bottom: 20px">
@@ -78,26 +78,26 @@
                             </div>
                             <p class="item-brand" data-value="35000" id="p-listpirce">
                                 <span>Lượt Xem: <b>{{luotXem}}</b> - Lượt Mua: <b>{{luotMua}}</b></span>
-        
+
                             </p>
                             <p class="item-brand" data-value="26000" id="p-specialprice">
-                                <span>Tại Tiki:</span>
-                                <span id="span-price">{{number_format giaBan}}&nbsp;₫</span>
+                                <span>Giá:</span>
+                                <span id="span-price"style="color: red;font-size: 18px"><b>{{number_format giaBan}}&nbsp;₫</b></span>
                                 <span>(Đã có VAT)</span>
                             </p>
                             <p class="item-brand">
                                 <span>Tiết kiệm:</span>
-                                <span>0&nbsp;₫ (0%)</span>
+                                <span style="color: red;font-size: 16px"><b>10%</b></span><span> ({{divide giaBan 10}} ₫)</span>
                             </p>
                             <p class="partnership-price-item">
                                 <span class="js-product-gift-icon" data-toggle="tooltip" data-title="Thanh toán với thẻ Visa để được giảm thêm 10%, tối đa 200.000đ/đơn hàng. Áp dụng với 100 đơn hàng đầu tiên mỗi ngày. Chương trình kéo dài đến hết 30/09/2015."
                                     data-placement="bottom" data-original-title="" title="">
                                     <img src="http://tala.tikicdn.com/assets/media/visa-price-label.png">
                                 </span>
-                                <span>23.400&nbsp;₫</span>
+                                <span>Giảm 12.5% ({{divide giaBan 8}}&nbsp;₫)</span>
                             </p>
                             <p class="item-brand">
-                                <span><b>Còn {{soLuong}} sản phẩm</b></span>
+                                <span>Còn <b>{{soLuong}}</b> sản phẩm</span>
                             </p>
 
                         </div>
@@ -105,8 +105,8 @@
 
 
                             <div class="item-promotion">
-                                <div class="item-promotion-title"style="color: #00aaf1">
-                                    <h2>Dịch vụ &amp; Khuyến mãi</h2>
+                                <div class="item-promotion-title"style="color: orangered">
+                                    <h2 >Dịch vụ &amp; Khuyến mãi</h2>
                                 </div>
                                 <div class="item-promotion-content">
                                     <ul class="no-left">
@@ -167,11 +167,11 @@
                     </div>
                     <!--</form>-->
                 </div>
-                
+
             </div>
         </div>
-        <h1 style="font-size: 26px;font-weight: bold;margin-bottom: 22px;">Mô tả sách</h1>
-        <p style="font-size: 20px;margin-bottom: 22px;"> {{moTa}}</p>
+        <h1 style="color: #0d80e8;font-size: 22px;font-weight: bold;margin-bottom: 22px;margin-left: 20px;margin-top:20px">Mô tả sách</h1>
+        <p style="font-size: 15px;margin-bottom: 22px;margin-left: 25px"> {{moTa}}</p>
         {{/each}}
 
 
@@ -180,7 +180,7 @@
             <div class="block-inner-bar block-inner-tab-outer clearfix">
                 <ul class="block-inner-tab float-left home-aj-tab">
                     <li class="current">
-                        <a rel="nofollow" href="javascript:void(0);" data-container="#home_slider_book_new_outer,#home_slider_book_new_control" style="color: #0d80e8;">Sách cùng thể loại</a>
+                        <a rel="nofollow" href="javascript:void(0);" data-container="#home_slider_book_new_outer,#home_slider_book_new_control" style="color: #0d80e8;font-size: 22px;margin-top:20px"><b>Sách cùng thể loại</b></a>
                     </li>
                 </ul>
                 <div id="home_slider_book_new_control" class="block-slider-control float-right mr5" style="display: block;">
@@ -194,29 +194,29 @@
                 <div class="bar-more-button float-right">
                 </div>
             </div>
-            <div id="home_slider_book_new_outer" class="block-inner-content clearfix" style=" margin: auto; display: block;">
+            <div id="home_slider_book_new_outer" class="block-inner-content clearfix" style=" margin: auto; display: block;;margin-left: -5px">
                 <div id="owl-demo" class="owl-cachep-book-lib ">
                     {{#each kind}}
-                    <div class="item" style="width: 120px;">
-                        <li class="item-outer">
-                            <a class="item-thumb" href="./?id={{idSach}}" rel="nofollow">
-                                <img width="200" height="280" src="/{{hinhAnh}}" class="attachment-thumbnail-rectangle wp-post-image" alt="nhumuadongroixuong">
+                        <div class="item" style="width: 150px">
+                            <li class="item-outer">
+                                <a class="item-thumb" href="./?id={{idSach}}" rel="nofollow">
+                                    <img width="200" height="280" src="/{{hinhAnh}}" class="attachment-thumbnail-rectangle wp-post-image" alt="nhumuadongroixuong">
 
-                            </a>
-                            <div class="item-meta-outer">
-                                <h3 class="item-title">
-                                    <a href="./?id={{idSach}}">{{ten_sach}}</a>
-                                </h3>
-                                <em class="item-author">{{tac_gia}}</em>
-                                <p class="item-price">
-                                    <strong>{{number_format giaBan}}
-                                        <u>đ</u>
-                                    </strong>
+                                </a>
+                                <div class="item-meta-outer;"style="margin-left: -5px;width: 115%" >
+                                    <h3 class="item-title"style="font-size: 13px;">
+                                        <a href="./?id={{idSach}}">{{ten_sach}}</a>
+                                    </h3>
+                                    <em class="item-author"style="font-size: 12px;">{{tac_gia}}</em>
+                                    <p class="item-price">
+                                        <b>{{number_format giaBan}}
+                                            <u>đ</u>
+                                        </b>
 
-                                </p>
-                            </div>
-                        </li>
-                    </div>
+                                    </p>
+                                </div>
+                            </li>
+                        </div>
                     {{/each}}
                 </div>
             </div>
@@ -226,7 +226,7 @@
             <div class="block-inner-bar block-inner-tab-outer clearfix">
                 <ul class="block-inner-tab float-left home-aj-tab">
                     <li class="current">
-                        <a rel="nofollow" href="javascript:void(0);" data-container="#home_slider_book_new_outer,#home_slider_book_new_control" style="color: #0d80e8;">Sách cùng nhà xuất bản</a>
+                        <a rel="nofollow" href="javascript:void(0);" data-container="#home_slider_book_new_outer,#home_slider_book_new_control" style="color: #0d80e8;font-size: 22px;margin-top:20px"><b>Sách cùng nhà xuất bản</b></a>
                     </li>
                 </ul>
                 <div id="home_slider_book_new_control" class="block-slider-control float-right mr5" style="display: block;">
@@ -243,26 +243,26 @@
             <div id="home_slider_book_new_outer" class="block-inner-content clearfix" style="margin: auto; display: block;">
                 <div id="owl-demo" class="owl-cachep-book-lib ">
                     {{#each nxb}}
-                    <div class="item" style="width: 120px;">
-                        <li class="item-outer">
-                            <a class="item-thumb" href="./?id={{idSach}}" rel="nofollow">
-                                <img width="200" height="280" src="/{{hinhAnh}}" class="attachment-thumbnail-rectangle wp-post-image" alt="nhumuadongroixuong">
+                        <div class="item" style="width: 150px">
+                            <li class="item-outer">
+                                <a class="item-thumb" href="./?id={{idSach}}" rel="nofollow">
+                                    <img width="200" height="280" src="/{{hinhAnh}}" class="attachment-thumbnail-rectangle wp-post-image" alt="nhumuadongroixuong">
 
-                            </a>
-                            <div class="item-meta-outer">
-                                <h3 class="item-title">
-                                    <a href="./?id={{idSach}}">{{ten_sach}}</a>
-                                </h3>
-                                <em class="item-author">{{tac_gia}}</em>
-                                <p class="item-price">
-                                    <strong>{{number_format giaBan}}
-                                        <u>đ</u>
-                                    </strong>
+                                </a>
+                                <div class="item-meta-outer;"style="margin-left: -5px;width: 115%" >
+                                    <h3 class="item-title"style="font-size: 13px;">
+                                        <a href="./?id={{idSach}}">{{ten_sach}}</a>
+                                    </h3>
+                                    <em class="item-author"style="font-size: 12px;">{{tac_gia}}</em>
+                                    <p class="item-price">
+                                        <b>{{number_format giaBan}}
+                                            <u>đ</u>
+                                        </b>
 
-                                </p>
-                            </div>
-                        </li>
-                    </div>
+                                    </p>
+                                </div>
+                            </li>
+                        </div>
                     {{/each}}
                 </div>
             </div>

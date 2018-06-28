@@ -11,7 +11,7 @@ exports.load = sql => {
                 port: 3306,
                 user: 'root',
                 password: 'tutrinhtt',
-                database: 'doanwebck3',
+                database: 'doanwebck5',
             });
 
     cn.connect();
@@ -35,7 +35,7 @@ exports.save = sql => {
                 port: 3306,
                 user: 'root',
                 password: 'tutrinhtt',
-                database: 'doanwebck3',
+                database: 'doanwebck5',
             });
 
     cn.connect();
