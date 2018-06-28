@@ -13,16 +13,17 @@ var p4 = categoryRepo.loadAllPD();
 
 
 router.get('/', (req, res) => {
-    var p3 =categoryRepo.search_with_keyword(req.query.keyword,req.query.selectDanhMuc);
-    
-    Promise.all([p1, p3,p4]).then(([rowloais, rowBooks,rowNhaSXs]) => {
+    var p3 = categoryRepo.search_with_keyword(req.query.keyword, req.query.selectDanhMuc);
+    Promise.all([p1, p3, p4]).then(([rowloais, rowBooks, rowNhaSXs]) => {
         var vm = {
             loai: rowloais,
-            book:rowBooks,
-            NhaSX:rowNhaSXs,
-            keyword:req.query.keyword
+            book: rowBooks,
+            NhaSX: rowNhaSXs,
+            keyword: req.query.keyword,
+            url : "/tim-voi-key?selectDanhMuc=" + req.query.selectDanhMuc + "&keyword=" + req.query.keyword
+     
         };
-        
+        req.session.reUrl = "/tim-voi-key?selectDanhMuc=" + req.query.selectDanhMuc + "&keyword=" + req.query.keyword;
         res.render('search/tim-theo-loai', vm);
     });
 

@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
                 isEmpty: req.session.cart.length === 0,
                 diaChi: rows[0].diaChi,
                 SDT: rows[0].soDT,
+                url:"/cart"
             };
             res.render('cart/index', vm);
         });
@@ -24,6 +25,8 @@ router.get('/', (req, res) => {
             items: req.session.cart,
             total: cartRepo.getTotal(req.session.cart),
             isEmpty: req.session.cart.length === 0,
+            url:"/cart"
+            
         };
         res.render('cart/index', vm);
     }
@@ -53,7 +56,7 @@ router.post('/add', (req, res) => {
         cartRepo.add(req.session.cart, item);
 
         // res.redirect('/sample_product/?id=' + req.body.idSach);
-        res.redirect(req.body.url);
+        res.redirect(req.session.reUrl);
     });
 });
 router.post('/tt', (req, res) => {

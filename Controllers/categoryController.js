@@ -15,6 +15,7 @@ var p4 = categoryRepo.loadAllPD();
 
 router.get('/', (req, res) => {
     Promise.all([p1, p2,p4]).then(([rowloais, rowBooks,rowNhaSXs]) => {
+        req.session.reUrl = "/tim-kiem";                
         var vm = {
             url:"/tim-kiem",
             loai: rowloais,
@@ -29,11 +30,14 @@ router.get('/theo-loai/', (req, res) => {
     var p3 =categoryRepo.load_by_idLoai(req.query.id);
     var p5= products.loadTheLoai(req.query.id);
     Promise.all([p1, p3,p4,p5]).then(([rowloais, rowBooks,rowNhaSXs,loaifull]) => {
+        req.session.reUrl = "/tim-kiem/theo-loai/?id="+req.query.id;        
         var vm = {
             loai: rowloais,
             book:rowBooks,
             NhaSX:rowNhaSXs,
-            loaifull:loaifull[0]
+            loaifull:loaifull[0],
+            url : "/tim-kiem/theo-loai/?id="+req.query.id     
+            
         };
         res.render('search/tim-theo-loai', vm);
     });
@@ -41,11 +45,15 @@ router.get('/theo-loai/', (req, res) => {
 });
 router.get('/theo-NhaSX/', (req, res) => {
     var p3 =categoryRepo.load_by_idNhaSX(req.query.id);
-    Promise.all([p1, p3,p4]).then(([rowloais, rowBooks,rowNhaSXs]) => {
+    var p5=categoryRepo.loadNXB(req.query.id);
+    Promise.all([p1, p3,p4,p5]).then(([rowloais, rowBooks,rowNhaSXs,tenNXB]) => {
+        req.session.reUrl = "/tim-kiem/theo-NhaSX/?id="+req.query.id;                
         var vm = {
             loai: rowloais,
             book:rowBooks,
-            NhaSX:rowNhaSXs
+            NhaSX:rowNhaSXs,
+            tenNXB:tenNXB[0],
+            url : "/tim-kiem/theo-NhaSX/?id="+req.query.id              
 
         };
         res.render('search/theo-nhasx', vm);

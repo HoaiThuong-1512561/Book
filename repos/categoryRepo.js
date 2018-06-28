@@ -61,7 +61,7 @@ else if(idMuc==4){
 
 }
 else {
-    var sql = `Select distinct ten_sach, giaBan,hinhAnh,tac_gia from book,NhaSX where book.idNhaSX=NhaSX.idNhaSX and tenNhaSX like '%${keyword}%' or
+    var sql = `Select distinct idSach,ten_sach, giaBan,hinhAnh,tac_gia from book,NhaSX where book.idNhaSX=NhaSX.idNhaSX and tenNhaSX like '%${keyword}%' or
     ten_sach like '%${keyword}%' or tac_gia like '%${keyword}%'`;
 
 }
@@ -93,4 +93,8 @@ exports.addNXB=(tenNXB)=>{
 exports.addNewBook=(Book)=>{
     var sql=`insert into Book(ngayNhapHang, luotMua, luotXem,idNhaSX,hinhAnh,moTa,idLoai,giaBan,ten_sach,tac_gia,soLuong) values('${Book.ngayNhap}', '0', '0','${Book.idNXB}','img/book/${Book.hinhAnh}','${Book.moTa}','${Book.idLoai}','${Book.giaBan}','${Book.tenSach}','${Book.tacGia}','${Book.soLuong}')`;
     return db.save(sql);
+};
+exports.loadNXB=(idNXB)=>{
+    var sql=`Select * from NhaSX where idNhaSX='${idNXB}'`;
+    return db.load(sql);
 };

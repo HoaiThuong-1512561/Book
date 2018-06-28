@@ -12,12 +12,13 @@ router.get('/', (req, res) => {
         var p3=ProductRePo.loadTheLoai(rows[0].idLoai);
         var p4=ProductRePo.updateLX(rows[0].idSach,lx);
         Promise.all([p1, p2,p3,p4]).then(([kind, products,Theloai,lx]) => {
+        req.session.reUrl = "/sample_product?id="+req.query.id
             var vm={
                 products: rows,
-                url:"/sample_product?id="+req.query.id,
                 kind:kind,
                 nxb:products,
-                tl:Theloai[0]
+                tl:Theloai[0],
+                url:"/sample_product?id="+req.query.id
             }
             res.render('sample_product', vm);
         });

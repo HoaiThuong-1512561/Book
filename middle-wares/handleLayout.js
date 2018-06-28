@@ -22,7 +22,8 @@ module.exports = (req, res, next) => {
             totalCart: req.session.cart.length,
             categories: menu,
             nxb:nxb,
-            Authorized:req.session.Authorized
+            Authorized:req.session.Authorized,
+            reUrl:req.session.reUrl
         };
         
         next();
