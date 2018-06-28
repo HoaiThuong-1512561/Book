@@ -20,7 +20,7 @@
                 <span class="right">Tổng cộng: {{number_format donhang.tongGia}}đ</span>
                 <hr />
             </div>
-            <span>Đã được giao vào 07 thg 4 2018 </span>
+            <span>Tình trạng đơn hàng: {{#if donhang.trangThai}}<b>Đã giao hàng</b>{{else}}<b>Đang giao hàng</b>{{/if}}</span>
             <div>
                 {{#each sanpham}}
                 <div class="row">
@@ -38,7 +38,7 @@
                     </div>
                 </div>{{/each}}
 
-                
+
             </div>
             <hr />
             <div class="row">

@@ -58,9 +58,6 @@ router.post('/add', (req, res) => {
 });
 router.post('/tt', (req, res) => {
     if (req.session.isLogged) {
-
-
-
         var date = new Date().toLocaleString().slice(0, 19).replace('T', ' ');
         var cart = req.session.cart;
         if (cart.length === 0) {

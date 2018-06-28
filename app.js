@@ -11,6 +11,7 @@ var ss=require('handlebars-dateformat');
 var Handlebars = require('handlebars');
 var HandlebarsIntl = require('handlebars-intl');
 
+
 Handlebars.registerHelper('dateFormat', require('handlebars-dateformat'));
 
 
@@ -23,7 +24,7 @@ var HomeController = require('./Controllers/HomeController');
 var ProductController = require('./Controllers/ProductController');
 var accountController = require('./Controllers/accountController');
 var categoryController = require('./Controllers/categoryController');
-var cartController = require('./controllers/cartController');
+var cartController = require('./Controllers/cartController');
 var managerController=require('./Controllers/managerController');
 var SearchController = require('./Controllers/SearchController');
 

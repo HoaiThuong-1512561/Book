@@ -43,3 +43,7 @@ exports.deleteUser=(username)=>{
     var sql=`DELETE FROM nguoidung WHERE userName='${username}'`;
     return db.save(sql);
 };
+exports.updatePass=(user,pass)=>{
+    var sql = `UPDATE NguoiDung SET pass='${pass}' WHERE userName = '${user}'`;
+    return db.save(sql);
+}
