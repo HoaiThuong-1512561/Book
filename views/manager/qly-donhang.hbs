@@ -24,7 +24,7 @@
 
                         <tr class="green">
                             <td>{{idThanhToan}} </td>
-                            <td>{{ngayDatHang}} </td>
+                            <td>{{dateFormat ngayDatHang "DD/MM/YYYY, h:mm:ss a"}} </td>
                             <td>{{hoTen}}</td>
                             <td>{{diaChi}} </td>
                             <td>{{soDT}} </td>
@@ -49,7 +49,7 @@
                         <tr>
                             <input type="text" class="hidden" name="idThanhToan" value="{{idThanhToan}}">
                             <td>{{idThanhToan}} </td>
-                            <td>{{ngayDatHang}} </td>
+                            <td>{{dateFormat ngayDatHang "DD/MM/YYYY, h:mm:ss a"}} </td>
                             <td>{{hoTen}}</td>
                             <td>{{diaChi}} </td>
                             <td>{{soDT}} </td>

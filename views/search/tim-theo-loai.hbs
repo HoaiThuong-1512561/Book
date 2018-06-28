@@ -150,17 +150,16 @@
             <ul class="breadcrumb no-style" xmlns:v="">
                 <li typeof="v:Breadcrumb">
                     <a rel="v:url" property="v:title" href="/">Trang chủ</a>
-                  
                 </li>
                 <li typeof="v:Breadcrumb">
                     <a rel="v:url" property="v:title" href="#">{{loaifull.tenLoai}}</a>
-                    
+
                 </li>
-                 <li typeof="v:Breadcrumb">
+                <li typeof="v:Breadcrumb">
                     <a rel="v:url" property="v:title" href="#">{{keyword}}</a>
-                    
+
                 </li>
-                
+
             </ul>
             <div class="content-block clearfix content-block-list content-block-product-grid">
 
@@ -169,63 +168,58 @@
                     <ul id="myList" class="block-slider-items list-item-default" style="width: 104%">
                         <table id="example1" class="table table-striped" style="margin-top: -17px;width: 1000%;margin-left: 15px">
                             <thead>
-                            {{#withGroup book 4}}
+                                {{#withGroup book 4}}
                                 <tr>
                                     {{#each this}}
-                                        <th style="border-top: 0px none #fff;padding: 0px;border-bottom: 0px none #fff; border-width: 0px"></th>
+                                    <th style="border-top: 0px none #fff;padding: 0px;border-bottom: 0px none #fff; border-width: 0px"></th>
                                     {{/each}}
                                 </tr>
-                            {{/withGroup}}
+                                {{/withGroup}}
                             </thead>
 
                             <tbody>
-                            {{#withGroup book 4}}
+                                {{#withGroup book 4}}
                                 <tr>
                                     {{#each this}}
-                                        <td style="width:25%">
-                                            <div class="item">
-                                                <li class="item-outer" style="width: 100%">
-                                                    <a class="item-thumb" href="sample_product/?id={{idSach}}" rel="nofollow">
-                                                        <img width="200" height="280" src="/{{hinhAnh}}" class="attachment-thumbnail-rectangle wp-post-image" alt="nhumuadongroixuong">
-                                                        <span class="item-percent-bubble">-10%</span>
-                                                    </a>
-                                                    <div class="item-meta-outer" style="text-align: center;">
-                                                        <h3 class="item-title">
-                                                            <a href="sample_product/?id={{idSach}}">{{ten_sach}}</a>
-                                                        </h3>
-                                                        <em class="item-author">{{tac_gia}}</em>
-                                                        <p class="item-price">
-                                                            <strong>{{number_format giaBan}}
-                                                                <u>đ</u>
-                                                            </strong>
-                                                            <small>{{number_format giaBan}}
-                                                                <u>đ</u>
-                                                            </small>
+                                    {{layoutVM.reUrl}}
+                                        
+                                   
+                                    <td style="width:25%">
+                                        <div class="item">
+                                            <li class="item-outer" style="width: 100%">
+                                                <a class="item-thumb" href="/../sample_product/?id={{idSach}}" rel="nofollow">
+                                                    <img width="200" height="280" src="/{{hinhAnh}}" class="attachment-thumbnail-rectangle wp-post-image" alt="nhumuadongroixuong">
+                                                    <span class="item-percent-bubble">-10%</span>
+                                                </a>
+                                                <div class="item-meta-outer" style="text-align: center;">
+                                                    <h3 class="item-title">
+                                                        <a href="/../sample_product/?id={{idSach}}">{{ten_sach}}</a>
+                                                    </h3>
+                                                    <em class="item-author">{{tac_gia}}</em>
+                                                    <p class="item-price">
+                                                        <strong>{{number_format giaBan}}
+                                                            <u>đ</u>
+                                                        </strong>
+                                                        <small>{{number_format giaBan}}
+                                                            <u>đ</u>
+                                                        </small>
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <form method="post" action="/cart/add">
+                                                        <input id="sl" class="hidden" name="sl" value="1">
+                                                        <input id="idSach" name="idSach" type="hidden" value="{{idSach}}">
+                                                        <input type="text" class="hidden" name="url" value="/"> 
+                                                        <button class="next-btn next-btn-primary next-btn-large" style="width: 100%;">Thêm vào giỏ hàng</button>
+                                                    </form>
+                                                </div>
+                                            </li>
+                                        </div>
 
-
-                                                        </p>
-
-                                                    </div>
-                                                    <div>
-                                                        <form method="post" action="/cart/add">
-                                                            <input id="sl" class="hidden" name="sl" value="1">
-                                                            <input id="idSach" name="idSach" type="hidden" value="{{idSach}}">
-                                                            <input type="text" class="hidden" name="url" value="/tim-kiem">
-
-                                                            <button class="next-btn next-btn-primary next-btn-large" style="width: 100%;">Thêm vào giỏ hàng</button>
-                                                        </form>
-
-
-
-                                                    </div>
-                                                </li>
-                                            </div>
-
-                                        </td>
+                                    </td>
                                     {{/each}}
                                 </tr>
-                            {{/withGroup}}
-
+                                {{/withGroup}}
                             </tbody>
                         </table>
 
@@ -287,3 +281,4 @@
         //Initialize Select2 Elements
         $('.select2').select2();
     </script> {{/section}}
+

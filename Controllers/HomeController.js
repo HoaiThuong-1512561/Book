@@ -12,12 +12,12 @@ var p3 = HomeRePo.loadByViews();
 router.get('/', (req, res) => {
 
     Promise.all([p1, p2, p3]).then(([newB, bestS, Views]) => {
-
+        req.session.reUrl = "/"
         var vm = {
             newBook: newB,
             bestSaleBook: bestS,
             byViews: Views,
-            
+            url:"/"
         };
         res.render('index', vm);
     });
