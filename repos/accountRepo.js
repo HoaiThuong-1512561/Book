@@ -1,7 +1,7 @@
 var db = require('../fn/db');
 
 exports.addCustomer = user => {
-    var sql = `insert into KhachHang(hoTen, diaChi, soDT) values('${user.name}', '${user.address}', '${user.phonenumber}')`;
+    var sql = `insert into KhachHang(hoTen, diaChi, soDT,email) values('${user.name}', '${user.address}', '${user.phonenumber}','${user.email}')`;
     return db.save(sql);
 };
 

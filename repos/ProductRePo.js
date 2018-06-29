@@ -2,6 +2,8 @@ var db = require('../fn/db');
 
 exports.searchById = (id) => {
     var sql = `Select* from Book
+     INNER JOIN NhaSX ON Book.idNhaSX=nhasx.idNhaSX
+     INNER JOIN loai ON Book.idLoai=loai.idLoai
     where idSach = ${id}`;
     return db.load(sql);
 }
@@ -29,6 +31,7 @@ exports.loadByPD = (idNXB) => {
     var sql = `select * from Book where idNhaSX="${idNXB}" order by luotXem desc limit ${10} offset ${0}`;
     return db.load(sql);
 }
+
 
 exports.loadTheLoai = (idTheLoai,idSach) => {
     var sql= `select * from book where idLoai='${idTheLoai}' and idSach!='${idSach}'`;

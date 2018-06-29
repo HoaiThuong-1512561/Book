@@ -7,7 +7,14 @@ var payRepo = require('../repos/payRepo');
 var restrict = require('../middle-wares/restrict');
 var Recaptcha = require('express-recaptcha').Recaptcha;
 var recaptcha = new Recaptcha('6LdoIGEUAAAAADW83_JdZknEjFYPl7bLmJD_YVzo', '6LdoIGEUAAAAANFjdBJxqiedi0D8wd3FtVWxCJUN');
-
+var nodemailer =  require('nodemailer'); // khai báo sử dụng module nodemailer
+var transporter =  nodemailer.createTransport({ // config mail server
+    service: 'Gmail',
+    auth: {
+        user: 'suncena97@gmail.com',
+        pass: 'tutrinhtt'
+    }
+});
 var router = express.Router();
 
 router.get('/register', (req, res) => {
@@ -21,6 +28,7 @@ router.post('/register', (req, res) => {
         name: req.body.fullname,
         address: req.body.address,
         phonenumber: req.body.phone,
+        email: req.body.email,
         permission: 0,
     };
 
@@ -34,6 +42,22 @@ router.post('/register', (req, res) => {
         } else {
             var idCustomer;
             accountRepo.addCustomer(user).then(value => {
+                var mainOptions = { // thiết lập đối tượng, nội dung gửi mail
+                    from: 'admin of website auction',
+                     to: user.email,
+                    // to: 'ttttrinh132@gmail.com',
+                    subject: 'Đăng ký tài khoản BookStore Online thành công!',
+                    text: 'You recieved message from ',
+                    html: '<p>Chúc mừng bạn đăng ký thành công</p>'
+                }
+
+                transporter.sendMail(mainOptions, function(err, info){
+                    if (err) {
+                        console.log("err: "+err);
+                    } else {
+                        console.log('Message sent: ' +  info.response);
+                    }
+                });
                 idCustomer = value.insertId;
                 accountRepo.addUser(user, idCustomer).then(value => {
                     var vm = {
