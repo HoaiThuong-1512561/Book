@@ -1,6 +1,5 @@
  {{#section 'js'}}
 <script type="text/javascript">
-
     var validate = function () {
         if ($('#txtUsername').val().length === 0) {
             alert('Vui lòng nhập tên đăng nhập');
@@ -14,13 +13,16 @@
             alert('2 mật khẩu không trùng nhau');
             return false;
         }
-        if ($('#g-recaptcha-response').val() ==='') {
-            alert('Chưa xác minh Captcha'));
+         if ($('#g-recaptcha-response').val() == ''){
+            alert('Vui lòng xác nhận capcha');
+            return false;
+        }
+        if ($('#email').val().length ===0){
+            alert('Vui lòng nhập email');
             return false;
         }
         return true;
     }
-    
 </script> 
 
 {{/section}} {{#if showError}}
@@ -94,14 +96,10 @@
                     </div>
                     <div class="mod-input mod-login-input-name mod-input-name">
                         <label>Email</label>
-                        <input type="email" placeholder="Email" name="email"data-meta="Field">
+                        <input type="email" placeholder="Email" name="email"data-meta="Field" id="email">
                         <b></b>
                         <span></span>
                     </div>
-
-
-
-
                 </div>
                 <div class="form-row subscribe-outer" style="width: 18%;margin-left: 100px">
                     <button type="submit" class="button-default ygradient1 ">ĐĂNG KÝ</button>
